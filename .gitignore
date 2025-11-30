@@ -1,0 +1,29 @@
+# Archivos sensibles
+*.sql
+*.env
+app/config/Database.php
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Carpetas de caché o temporales
+/vendor/
+/node_modules/
+/cache/
+/tmp/
+
+# Archivos de backup
+*.bak
+*.backup
+bk_basededatos.sql
+
+# IDE (VSCode, PhpStorm)
+.vscode/
+.idea/
+
+# Sistema operativo
+desktop.ini
