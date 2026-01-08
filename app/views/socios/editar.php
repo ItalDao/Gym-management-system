@@ -38,12 +38,12 @@
                                     <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%); border-radius: 10px; margin-bottom: 15px;">
                                         <img src="/img/socios/<?= $socio['foto'] ?>" alt="Foto actual" 
                                              class="rounded" width="120" height="120" 
-                                             style="object-fit: cover; border: 4px solid #ff6b35;">
+                                             style="object-fit: cover; border: 4px solid #F97316;">
                                         <p style="color: #999; font-size: 12px; margin-top: 10px; margin-bottom: 0;">Foto Actual</p>
                                     </div>
                                 <?php endif; ?>
                                 
-                                <div style="border: 2px dashed #ff6b35; padding: 30px; border-radius: 10px; text-align: center; background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 107, 53, 0.02) 100%);" id="upload-area">
+                                <div style="border: 2px dashed #F97316; padding: 30px; border-radius: 10px; text-align: center; background: linear-gradient(135deg, rgba(249, 115, 22, 0.05) 0%, rgba(249, 115, 22, 0.02) 100%);" id="upload-area">
                                     <input type="file" 
                                            class="form-control" 
                                            id="foto"
@@ -52,13 +52,13 @@
                                            onchange="previewImage(event)"
                                            style="display: none;">
                                     <label for="foto" style="cursor: pointer; margin: 0;">
-                                        <i class="fas fa-cloud-upload-alt" style="font-size: 32px; color: #ff6b35; display: block; margin-bottom: 10px;"></i>
+                                        <i class="fas fa-cloud-upload-alt" style="font-size: 32px; color: #F97316; display: block; margin-bottom: 10px;"></i>
                                         <span style="color: #666; font-weight: 600;">Seleccionar imagen o arrastrar</span>
                                     </label>
                                     <small style="color: #999; display: block; margin-top: 8px;">Dejar en blanco para mantener la foto actual</small>
                                 </div>
                                 <div id="preview-container" style="display: none;" class="mt-3 text-center">
-                                    <img id="preview" src="" alt="Vista previa" class="rounded" style="max-width: 120px; max-height: 120px; border: 3px solid #ff6b35;">
+                                    <img id="preview" src="" alt="Vista previa" class="rounded" style="max-width: 120px; max-height: 120px; border: 3px solid #F97316;">
                                 </div>
                             </div>
 
@@ -171,13 +171,13 @@
 
         uploadArea.addEventListener('dragover', (e) => {
             e.preventDefault();
-            uploadArea.style.background = 'linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(255, 107, 53, 0.05) 100%)';
-            uploadArea.style.borderColor = '#ff5521';
+            uploadArea.style.background = 'linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0.05) 100%)';
+            uploadArea.style.borderColor = '#F97316';
         });
 
         uploadArea.addEventListener('dragleave', () => {
-            uploadArea.style.background = 'linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 107, 53, 0.02) 100%)';
-            uploadArea.style.borderColor = '#ff6b35';
+            uploadArea.style.background = 'linear-gradient(135deg, rgba(249, 115, 22, 0.05) 0%, rgba(249, 115, 22, 0.02) 100%)';
+            uploadArea.style.borderColor = '#F97316';
         });
 
         uploadArea.addEventListener('drop', (e) => {

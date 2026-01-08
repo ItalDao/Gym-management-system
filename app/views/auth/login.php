@@ -195,7 +195,7 @@ $config = Configuracion::getInfo();
         }
 
         .form-group label i {
-            color: #22C55E;
+            color: #DC2626;
             font-size: 14px;
         }
 
@@ -215,7 +215,7 @@ $config = Configuracion::getInfo();
 
         .form-control:focus {
             outline: none;
-            border-color: #22C55E;
+            border-color: #DC2626;
             box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1),
                         0 4px 12px rgba(34, 197, 94, 0.15);
             background: #fafafa;
@@ -287,9 +287,9 @@ $config = Configuracion::getInfo();
             border-radius: 10px;
             margin-bottom: 28px;
             font-weight: 500;
-            border-left: 4px solid #b71c1c;
+            border-left: 4px solid #DC2626;
             background: linear-gradient(135deg, #ffe6e6 0%, #fff5f5 100%);
-            color: #b71c1c;
+            color: #DC2626;
             display: flex;
             align-items: flex-start;
             gap: 12px;

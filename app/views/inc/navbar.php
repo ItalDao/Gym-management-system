@@ -202,13 +202,13 @@ $config = Configuracion::getInfo();
             <?php if(!empty($config['logo'])): ?>
                 <img src="/img/<?= $config['logo'] ?>?v=<?= time() ?>" alt="Logo">
             <?php else: ?>
-                <i class="fas fa-dumbbell" style="font-size: 28px; background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                <i class="fas fa-dumbbell" style="font-size: 28px; background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
             <?php endif; ?>
             <span><?= $config['nombre_sistema'] ?></span>
         </a>
         
         <button class="navbar-toggler navbar-toggler-premium" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
-            <i class="fas fa-bars" style="color: #d4af37;"></i>
+            <i class="fas fa-bars" style="color: #F97316;"></i>
         </button>
         
         <div class="collapse navbar-collapse" id="navbarNav">

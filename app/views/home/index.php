@@ -170,8 +170,8 @@
                         datasets: [{
                             label: 'Ventas del Mes',
                             data: <?= json_encode($data) ?>,
-                            backgroundColor: 'rgba(102, 126, 234, 0.8)',
-                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(220, 38, 38, 0.8)',
+                            borderColor: '#DC2626',
                             borderWidth: 2,
                             borderRadius: 8,
                             tension: 0.4
@@ -212,11 +212,11 @@
                         datasets: [{
                             data: <?= json_encode($planesData) ?>,
                             backgroundColor: [
-                                'rgba(102, 126, 234, 0.8)',
-                                'rgba(6, 214, 160, 0.8)',
-                                'rgba(255, 165, 2, 0.8)',
-                                'rgba(233, 69, 96, 0.8)',
-                                'rgba(76, 175, 80, 0.8)'
+                                'rgba(220, 38, 38, 0.8)',
+                                'rgba(249, 115, 22, 0.8)',
+                                'rgba(31, 41, 55, 0.8)',
+                                'rgba(239, 68, 68, 0.8)',
+                                'rgba(153, 27, 27, 0.8)'
                             ],
                             borderColor: 'white',
                             borderWidth: 3
@@ -241,7 +241,7 @@
         <?php else: ?>
             
             <!-- Hero Welcome Section for Non-Admin Users -->
-            <div class="card card-welcome shadow-lg border-0 mb-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; overflow: hidden;">
+            <div class="card card-welcome shadow-lg border-0 mb-5" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; overflow: hidden;">
                 <div class="card-body py-5">
                     <div class="row align-items-center">
                         <div class="col-md-8">
@@ -268,7 +268,7 @@
                     <a href="/asistencia/index" class="text-decoration-none">
                         <div class="card card-action h-100 border-0 shadow-sm">
                             <div class="card-body text-center py-4">
-                                <i class="fas fa-clock" style="font-size: 32px; color: #667eea; margin-bottom: 10px;"></i>
+                                <i class="fas fa-clock" style="font-size: 32px; color: #DC2626; margin-bottom: 10px;"></i>
                                 <h6 class="fw-bold">Control de Asistencia</h6>
                                 <p class="text-muted small mb-0">Registra entradas y salidas</p>
                             </div>
@@ -281,7 +281,7 @@
                         <a href="/suscripciones/crear" class="text-decoration-none">
                             <div class="card card-action h-100 border-0 shadow-sm">
                                 <div class="card-body text-center py-4">
-                                    <i class="fas fa-plus-circle" style="font-size: 32px; color: #06d6a0; margin-bottom: 10px;"></i>
+                                    <i class="fas fa-plus-circle" style="font-size: 32px; color: #F97316; margin-bottom: 10px;"></i>
                                     <h6 class="fw-bold">Nueva Venta</h6>
                                     <p class="text-muted small mb-0">Crear nueva suscripción</p>
                                 </div>
@@ -306,7 +306,7 @@
                         <a href="/socios/index" class="text-decoration-none">
                             <div class="card card-action h-100 border-0 shadow-sm">
                                 <div class="card-body text-center py-4">
-                                    <i class="fas fa-chart-line" style="font-size: 32px; color: #06d6a0; margin-bottom: 10px;"></i>
+                                    <i class="fas fa-chart-line" style="font-size: 32px; color: #F97316; margin-bottom: 10px;"></i>
                                     <h6 class="fw-bold">Ver Progreso de Socios</h6>
                                     <p class="text-muted small mb-0">Seguimiento de socios</p>
                                 </div>

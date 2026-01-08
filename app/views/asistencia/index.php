@@ -12,7 +12,7 @@
         .big-input { font-size: 2rem; text-align: center; letter-spacing: 5px; font-weight: bold; }
         .foto-validacion { 
             width: 220px; height: 220px; object-fit: cover; 
-            border: 5px solid #22C55E;
+            border: 5px solid #DC2626;
             box-shadow: 0 8px 20px rgba(0,0,0,0.25); 
         }
         .card-verificacion { transform: scale(1.02); transition: all 0.3s; }
@@ -122,14 +122,14 @@
                         </div>
                         <div class="card-body p-5 text-center">
                             <div class="mb-4">
-                                <i class="fas fa-dumbbell fa-4x" style="color: #22C55E; opacity: 0.3;"></i>
+                                <i class="fas fa-dumbbell fa-4x" style="color: #DC2626; opacity: 0.3;"></i>
                                 <h5 class="text-muted mt-3">Escanea tu DNI para ingresar</h5>
                             </div>
 
                             <form action="/asistencia/validar" method="POST">
                                 <input type="text" name="dni" class="form-control big-input" 
                                        placeholder="DNI..." autocomplete="off" autofocus required
-                                       style="border: 2px solid #22C55E;">
+                                       style="border: 2px solid #DC2626;">
                                 <div class="d-grid mt-4">
                                     <button type="submit" class="btn btn-primary btn-lg">
                                         <i class="fas fa-search"></i> BUSCAR SOCIO
@@ -146,7 +146,7 @@
 
         <div class="card shadow border-0 mt-3">
             <div class="card-header">
-                <h5 class="m-0"><i class="fas fa-history" style="color: #22C55E;"></i> Ingresos Confirmados Hoy</h5>
+                <h5 class="m-0"><i class="fas fa-history" style="color: #DC2626;"></i> Ingresos Confirmados Hoy</h5>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -162,7 +162,7 @@
                         <tbody>
                             <?php foreach($historial as $h): ?>
                                 <tr>
-                                    <td class="fw-bold" style="color: #22C55E;"><?= date('H:i:s', strtotime($h['fecha_hora'])) ?></td>
+                                    <td class="fw-bold" style="color: #DC2626;"><?= date('H:i:s', strtotime($h['fecha_hora'])) ?></td>
                                     <td><?= $h['nombre'] ?></td>
                                     <td><code><?= $h['dni'] ?></code></td>
                                     <td><span class="badge" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);">Ingresó</span></td>

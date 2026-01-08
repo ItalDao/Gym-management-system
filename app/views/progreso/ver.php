@@ -9,16 +9,16 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .pestaña-medida-premium {
-            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
             color: white;
         }
         .pestaña-rutina-premium {
-            background: linear-gradient(135deg, #ff6b35 0%, #ff5521 100%);
+            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
             color: white;
         }
         .tab-link-active {
-            border-bottom: 4px solid #b71c1c;
-            color: #b71c1c !important;
+            border-bottom: 4px solid #DC2626;
+            color: #DC2626 !important;
         }
     </style>
 </head>
@@ -106,7 +106,7 @@
                                             <input type="number" step="0.01" name="brazo" class="form-control" style="border: 2px solid #e0e0e0; padding: 10px 12px; border-radius: 8px;">
                                         </div>
                                     </div>
-                                    <button style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%); color: white; font-weight: 700; width: 100%; padding: 12px; border: none; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 10px;">
+                                    <button style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); color: white; font-weight: 700; width: 100%; padding: 12px; border: none; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 10px;">
                                         <i class="fas fa-save"></i> Registrar Medida
                                     </button>
                                 </form>
@@ -121,7 +121,7 @@
                         <div class="card border-0 shadow mb-4">
                             <div style="background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%); padding: 20px; border-radius: 15px 15px 0 0;">
                                 <h6 style="margin: 0; font-weight: 700; color: #1a1a1a; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px;">
-                                    <i class="fas fa-chart-line" style="color: #d4af37;"></i> Evolución de Peso
+                                    <i class="fas fa-chart-line" style="color: #DC2626;"></i> Evolución de Peso
                                 </h6>
                             </div>
                             <div class="card-body p-4">
@@ -142,7 +142,7 @@
                                     <thead style="background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);">
                                         <tr>
                                             <th>Fecha</th>
-                                            <th style="color: #22C55E;">Peso</th>
+                                            <th style="color: #DC2626;">Peso</th>
                                             <th>Grasa</th>
                                             <th>Cintura</th>
                                             <th>Brazo</th>
@@ -153,12 +153,12 @@
                                         <?php foreach($medidas as $m): ?>
                                         <tr>
                                             <td><small class="text-muted"><?= date('d/m/Y', strtotime($m['fecha'])) ?></small></td>
-                                            <td><strong style="color: #d4af37;"><?= $m['peso'] ?> kg</strong></td>
+                                            <td><strong style="color: #F97316;"><?= $m['peso'] ?> kg</strong></td>
                                             <td><?= $m['grasa'] ?> %</td>
                                             <td><?= $m['cintura'] ?> cm</td>
                                             <td><?= $m['brazo'] ?> cm</td>
                                             <td style="text-align: center;">
-                                                <a href="/progreso/eliminar_medida/<?= $m['id'] ?>/<?= $socio['id'] ?>" style="color: #b71c1c; text-decoration: none; transition: all 0.3s ease;" onclick="return confirm('¿Eliminar esta medida?');"><i class="fas fa-trash"></i></a>
+                                                <a href="/progreso/eliminar_medida/<?= $m['id'] ?>/<?= $socio['id'] ?>" style="color: #DC2626; text-decoration: none; transition: all 0.3s ease;" onclick="return confirm('¿Eliminar esta medida?');"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>
@@ -180,7 +180,7 @@
                         <?php 
                             $dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
                             $campos = ['dia1', 'dia2', 'dia3', 'dia4', 'dia5', 'dia6'];
-                            $colores = ['#b71c1c', '#ff6b35', '#d4af37', '#1a8917', '#0066cc', '#8b00ff'];
+                            $colores = ['#DC2626', '#F97316', '#991B1B', '#EF4444', '#EA580C', '#7F1D1D'];
                         ?>
                         
                         <?php for($i=0; $i<6; $i++): ?>
@@ -205,7 +205,7 @@
                     </div>
 
                     <div style="display: grid;">
-                        <button type="submit" style="background: linear-gradient(135deg, #ff6b35 0%, #ff5521 100%); color: white; font-weight: 700; padding: 16px; border: none; border-radius: 10px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer;">
+                        <button type="submit" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); color: white; font-weight: 700; padding: 16px; border: none; border-radius: 10px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer;">
                             <i class="fas fa-save"></i> GUARDAR RUTINA SEMANAL
                         </button>
                     </div>
@@ -224,13 +224,13 @@
                 datasets: [{
                     label: 'Evolución de Peso (Kg)',
                     data: <?= json_encode($dataPeso) ?>,
-                    borderColor: '#d4af37',
-                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                    borderColor: '#DC2626',
+                    backgroundColor: 'rgba(220, 38, 38, 0.1)',
                     tension: 0.4,
                     fill: true,
                     borderWidth: 3,
                     pointRadius: 6,
-                    pointBackgroundColor: '#d4af37',
+                    pointBackgroundColor: '#DC2626',
                     pointBorderColor: 'white',
                     pointBorderWidth: 2,
                     pointHoverRadius: 8

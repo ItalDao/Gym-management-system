@@ -44,7 +44,7 @@
                                     <i class="fas fa-coins"></i> Monto
                                 </label>
                                 <div class="input-group" style="height: 50px;">
-                                    <span class="input-group-text" style="background: linear-gradient(135deg, #b71c1c 0%, #8b1414 100%); color: white; font-weight: 700; border: none;">
+                                    <span class="input-group-text" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; font-weight: 700; border: none;">
                                         <?= $config['moneda'] ?>
                                     </span>
                                     <input 
@@ -52,7 +52,7 @@
                                         step="0.01" 
                                         name="monto" 
                                         class="form-control" 
-                                        style="border: 2px solid #b71c1c; font-weight: 700; font-size: 16px;"
+                                        style="border: 2px solid #DC2626; font-weight: 700; font-size: 16px;"
                                         placeholder="0.00" 
                                         required>
                                 </div>

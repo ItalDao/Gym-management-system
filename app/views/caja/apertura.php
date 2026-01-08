@@ -16,8 +16,8 @@
     <div class="container mt-4 mb-5">
         
         <?php if(isset($_GET['msg']) && $_GET['msg']=='cerrado'): ?>
-            <div class="alert alert-dismissible fade show mb-4" role="alert" style="background: linear-gradient(135deg, #e8f5e9 0%, #fff9c4 100%); border-left: 4px solid #1a8917;">
-                <h4 style="color: #1a8917; margin: 0 0 8px 0;">
+            <div class="alert alert-dismissible fade show mb-4" role="alert" style="background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%); border-left: 4px solid #DC2626;">
+                <h4 style="color: #DC2626; margin: 0 0 8px 0;">
                     <i class="fas fa-check-circle"></i> ¡Turno Cerrado Correctamente!
                 </h4>
                 <p style="color: #558b2f; margin: 0;">La caja está lista para una nueva apertura.</p>
@@ -43,7 +43,7 @@
                                     <i class="fas fa-coins"></i> Monto Inicial
                                 </label>
                                 <div class="input-group" style="height: 50px;">
-                                    <span class="input-group-text" style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%); color: white; font-weight: 700; border: none; font-size: 18px;">
+                                    <span class="input-group-text" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); color: white; font-weight: 700; border: none; font-size: 18px;">
                                         <?= $config['moneda'] ?>
                                     </span>
                                     <input 
@@ -80,9 +80,9 @@
                         <tr>
                             <th>Fecha Cierre</th>
                             <th>Cajero</th>
-                            <th style="color: #d4af37;">Inicial</th>
-                            <th style="color: #ff6b35;">Ventas</th>
-                            <th style="color: #b71c1c;">Gastos</th>
+                            <th style="color: #F97316;">Inicial</th>
+                            <th style="color: #F97316;">Ventas</th>
+                            <th style="color: #DC2626;">Gastos</th>
                             <th style="color: #1a1a1a;">Esperado</th>
                             <th style="color: #1a1a1a;">Real</th>
                             <th style="color: #1a1a1a;">Cuadre</th>
@@ -95,17 +95,17 @@
                                 <td><small class="text-muted"><?= date('d/m/Y H:i', strtotime($h['fecha_cierre'])) ?></small></td>
                                 <td><strong><?= $h['cajero'] ?></strong></td>
                                 <td>
-                                    <span class="badge" style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);">
+                                    <span class="badge" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);">
                                         <?= $config['moneda'] . number_format($h['monto_inicial'], 2) ?>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="badge" style="background: linear-gradient(135deg, #ff6b35 0%, #ff5521 100%);">
+                                    <span class="badge" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);">
                                         +<?= number_format($h['total_ventas'], 2) ?>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="badge" style="background: linear-gradient(135deg, #b71c1c 0%, #8b1414 100%);">
+                                    <span class="badge" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);">
                                         -<?= number_format($h['total_gastos'], 2) ?>
                                     </span>
                                 </td>
@@ -121,15 +121,15 @@
                                 
                                 <td>
                                     <?php if($h['diferencia'] == 0): ?>
-                                        <span class="badge" style="background: linear-gradient(135deg, #1a8917 0%, #135a0e 100%);">
+                                        <span class="badge" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);">
                                             <i class="fas fa-check-circle"></i> OK
                                         </span>
                                     <?php elseif($h['diferencia'] < 0): ?>
-                                        <span class="badge" style="background: linear-gradient(135deg, #b71c1c 0%, #8b1414 100%);">
+                                        <span class="badge" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);">
                                             <i class="fas fa-minus-circle"></i> Falta
                                         </span>
                                     <?php else: ?>
-                                        <span class="badge" style="background: linear-gradient(135deg, #ff6b35 0%, #ff5521 100%);">
+                                        <span class="badge" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);">
                                             <i class="fas fa-plus-circle"></i> Sobra
                                         </span>
                                     <?php endif; ?>

@@ -66,7 +66,7 @@
                 text: "Esta acción no se puede deshacer.",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#667eea',
+                confirmButtonColor: '#DC2626',
                 cancelButtonColor: '#6c757d',
                 confirmButtonText: '<i class="fas fa-check"></i> Sí, confirmar',
                 cancelButtonText: '<i class="fas fa-times"></i> Cancelar',

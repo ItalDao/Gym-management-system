@@ -18,7 +18,7 @@
         <div class="mb-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h1 class="mb-2"><i class="fas fa-user-shield" style="color: #22C55E;"></i> Gestión de Usuarios</h1>
+                    <h1 class="mb-2"><i class="fas fa-user-shield" style="color: #DC2626;"></i> Gestión de Usuarios</h1>
                     <p class="text-muted">Control de accesos y permisos del sistema</p>
                 </div>
                 <a href="/usuarios/crear" class="btn btn-primary">
@@ -46,15 +46,15 @@
                         <tr>
                             <td><small class="text-muted">#<?= $u['id'] ?></small></td>
                             <td>
-                                <strong style="color: #22C55E;"><?= $u['nombre'] ?></strong>
+                                <strong style="color: #DC2626;"><?= $u['nombre'] ?></strong>
                             </td>
                             <td><small><?= $u['email'] ?></small></td>
                             <td>
                                 <?php 
-                                    $rolColor = '#3B82F6';
+                                    $rolColor = '#DC2626';
                                     $rolIcon = 'fa-user';
                                     if($u['rol'] == 'admin') { 
-                                        $rolColor = '#22C55E'; 
+                                        $rolColor = '#DC2626'; 
                                         $rolIcon = 'fa-crown';
                                     }
                                     if($u['rol'] == 'recepcionista') { 
@@ -99,7 +99,7 @@
                                     <?php else: ?>
                                         <a href="/usuarios/cambiarEstado/<?= $u['id'] ?>/activo" 
                                            class="btn btn-sm btn-confirm"
-                                           style="background: linear-gradient(135deg, #1a8917 0%, #135a0e 100%); color: white; border: none;"
+                                           style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; border: none;"
                                            data-title="¿Reactivar acceso a <?= $u['nombre'] ?>?"
                                            title="Activar">
                                             <i class="fas fa-check"></i>

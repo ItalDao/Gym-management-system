@@ -47,7 +47,7 @@
                                         <i class="fas fa-coins"></i> Precio
                                     </label>
                                     <div class="input-group" style="height: 50px;">
-                                        <span class="input-group-text" style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%); color: white; font-weight: 700; border: none;">
+                                        <span class="input-group-text" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); color: white; font-weight: 700; border: none;">
                                             <?= $config['moneda'] ?>
                                         </span>
                                         <input 
@@ -56,7 +56,7 @@
                                             class="form-control" 
                                             name="precio" 
                                             value="<?= $plan['precio'] ?>"
-                                            style="border: 2px solid #d4af37; font-weight: 700;"
+                                            style="border: 2px solid #F97316; font-weight: 700;"
                                             required>
                                     </div>
                                 </div>

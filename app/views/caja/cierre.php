@@ -33,19 +33,19 @@
                             <div class="col-md-4 mb-3">
                                 <div style="padding: 20px; border-radius: 12px; background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(153, 27, 27, 0.1) 100%); border-left: 4px solid #DC2626;">
                                     <small style="color: #999; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Base Inicial</small>
-                                    <h3 style="color: #d4af37; margin-top: 12px; margin-bottom: 0; font-weight: 800;"><?= $config['moneda'] ?> <?= number_format($monto_inicial, 2) ?></h3>
+                                    <h3 style="color: #F97316; margin-top: 12px; margin-bottom: 0; font-weight: 800;"><?= $config['moneda'] ?> <?= number_format($monto_inicial, 2) ?></h3>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <div style="padding: 20px; border-radius: 12px; background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 85, 33, 0.1) 100%); border-left: 4px solid #ff6b35;">
+                                <div style="padding: 20px; border-radius: 12px; background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(234, 88, 12, 0.1) 100%); border-left: 4px solid #F97316;">
                                     <small style="color: #999; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Ventas Turno</small>
-                                    <h3 style="color: #ff6b35; margin-top: 12px; margin-bottom: 0; font-weight: 800;">+ <?= number_format($total_ventas, 2) ?></h3>
+                                    <h3 style="color: #F97316; margin-top: 12px; margin-bottom: 0; font-weight: 800;">+ <?= number_format($total_ventas, 2) ?></h3>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <div style="padding: 20px; border-radius: 12px; background: linear-gradient(135deg, rgba(183, 28, 28, 0.1) 0%, rgba(139, 20, 20, 0.1) 100%); border-left: 4px solid #b71c1c;">
+                                <div style="padding: 20px; border-radius: 12px; background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(153, 27, 27, 0.1) 100%); border-left: 4px solid #DC2626;">
                                     <small style="color: #999; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Gastos Turno</small>
-                                    <h3 style="color: #b71c1c; margin-top: 12px; margin-bottom: 0; font-weight: 800;">- <?= number_format($total_gastos, 2) ?></h3>
+                                    <h3 style="color: #DC2626; margin-top: 12px; margin-bottom: 0; font-weight: 800;">- <?= number_format($total_gastos, 2) ?></h3>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                         <div style="background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%); padding: 30px; border-radius: 12px; margin-bottom: 40px; border-left: 4px solid #DC2626;">
                             <div style="text-align: center; margin-bottom: 20px;">
                                 <small style="color: #999; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Dinero Esperado en Cajón</small>
-                                <h1 style="font-size: 42px; font-weight: 800; color: #22C55E; margin: 12px 0 0 0;">
+                                <h1 style="font-size: 42px; font-weight: 800; color: #DC2626; margin: 12px 0 0 0;">
                                     <?= $config['moneda'] . number_format($saldo_esperado, 2) ?>
                                 </h1>
                                 <p style="color: #999; font-size: 12px; margin-top: 8px; margin-bottom: 0;">
@@ -80,14 +80,14 @@
                                 <div style="display: flex; justify-content: center;">
                                     <div style="width: 100%; max-width: 400px;">
                                         <div style="display: flex; height: 60px;">
-                                            <span style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%); color: white; padding: 0 20px; display: flex; align-items: center; font-weight: 700; font-size: 18px; border-radius: 10px 0 0 10px; border: none;">
+                                            <span style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); color: white; padding: 0 20px; display: flex; align-items: center; font-weight: 700; font-size: 18px; border-radius: 10px 0 0 10px; border: none;">
                                                 CONTEO: <?= $config['moneda'] ?>
                                             </span>
                                             <input 
                                                 type="number" 
                                                 step="0.01" 
                                                 name="monto_fisico" 
-                                                style="flex: 1; font-size: 20px; font-weight: 700; text-align: center; border: 2px solid #22C55E; border-left: none; border-radius: 0 10px 10px 0; padding: 0 20px;"
+                                                style="flex: 1; font-size: 20px; font-weight: 700; text-align: center; border: 2px solid #DC2626; border-left: none; border-radius: 0 10px 10px 0; padding: 0 20px;"
                                                 placeholder="0.00" 
                                                 required 
                                                 autofocus

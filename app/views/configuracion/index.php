@@ -16,14 +16,14 @@
         <!-- Encabezado -->
         <div class="mb-4">
             <div>
-                <h1 class="mb-2"><i class="fas fa-cogs" style="color: #b71c1c;"></i> Configuración del Sistema</h1>
+                <h1 class="mb-2"><i class="fas fa-cogs" style="color: #DC2626;"></i> Configuración del Sistema</h1>
                 <p class="text-muted">Administra los datos de tu empresa</p>
             </div>
         </div>
 
         <?php if(isset($_GET['msg'])): ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert" style="border-left: 4px solid #ff6b35; background: linear-gradient(135deg, #e8f5e9 0%, #fff9c4 100%);">
-                <i class="fas fa-check-circle" style="color: #1a8917;"></i> 
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="border-left: 4px solid #DC2626; background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%);">
+                <i class="fas fa-check-circle" style="color: #DC2626;"></i> 
                 <strong>¡Excelente!</strong> Configuración actualizada correctamente.
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
@@ -33,7 +33,7 @@
             <div class="col-lg-9">
                 <div class="card border-0 shadow">
                     <!-- Header Premium -->
-                    <div style="background: linear-gradient(135deg, #b71c1c 0%, #8b1414 100%); color: white; padding: 40px 30px;">
+                    <div style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; padding: 40px 30px;">
                         <h3 style="margin: 0; font-weight: 700; display: flex; align-items: center; gap: 12px;">
                             <i class="fas fa-building"></i> Datos de la Empresa
                         </h3>
@@ -83,7 +83,7 @@
                                     >
                                 </div>
                                 <div class="col-md-4 mb-4">
-                                    <label class="form-label fw-bold text-uppercase text-muted small" style="letter-spacing: 0.5px; color: #b71c1c !important;">
+                                    <label class="form-label fw-bold text-uppercase text-muted small" style="letter-spacing: 0.5px; color: #DC2626 !important;">
                                         <i class="fas fa-dollar-sign"></i> Símbolo Moneda
                                     </label>
                                     <input 
@@ -92,7 +92,7 @@
                                         name="moneda" 
                                         value="<?= $datos['moneda'] ?>" 
                                         placeholder="Ej: $, S/, €"
-                                        style="border: 2px solid #b71c1c; padding: 12px 16px; border-radius: 8px;"
+                                        style="border: 2px solid #DC2626; padding: 12px 16px; border-radius: 8px;"
                                         required
                                     >
                                 </div>
@@ -156,7 +156,7 @@
 
                             <!-- Botón -->
                             <div class="pt-3">
-                                <button type="submit" class="btn" style="background: linear-gradient(135deg, #b71c1c 0%, #8b1414 100%); color: white; font-weight: 700; padding: 14px 32px; border-radius: 8px; width: 100%; border: none; text-transform: uppercase; letter-spacing: 1px;">
+                                <button type="submit" class="btn" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; font-weight: 700; padding: 14px 32px; border-radius: 8px; width: 100%; border: none; text-transform: uppercase; letter-spacing: 1px;">
                                     <i class="fas fa-save"></i> Guardar Cambios
                                 </button>
                             </div>
