@@ -2,89 +2,136 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Apertura de Caja - Iron Gym</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caja - <?= $config['nombre_sistema'] ?? 'Gym' ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body class="bg-light">
 
     <?php require_once '../app/views/inc/navbar.php'; ?>
 
-    <div class="container mt-5 mb-5">
+    <div class="container mt-4 mb-5">
         
         <?php if(isset($_GET['msg']) && $_GET['msg']=='cerrado'): ?>
-            <div class="alert alert-success text-center mb-4 shadow-sm">
-                <h4><i class="fas fa-check-circle"></i> Turno cerrado correctamente</h4>
-                <p class="m-0">La caja está lista para una nueva apertura.</p>
+            <div class="alert alert-dismissible fade show mb-4" role="alert" style="background: linear-gradient(135deg, #e8f5e9 0%, #fff9c4 100%); border-left: 4px solid #1a8917;">
+                <h4 style="color: #1a8917; margin: 0 0 8px 0;">
+                    <i class="fas fa-check-circle"></i> ¡Turno Cerrado Correctamente!
+                </h4>
+                <p style="color: #558b2f; margin: 0;">La caja está lista para una nueva apertura.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         <?php endif; ?>
 
+        <!-- Apertura de Caja -->
         <div class="row justify-content-center mb-5">
-            <div class="col-md-6">
-                <div class="card shadow-lg border-0 border-top border-primary border-5">
-                    <div class="card-header bg-white text-center py-4">
-                        <h2 class="text-primary fw-bold"><i class="fas fa-cash-register"></i> Apertura de Caja</h2>
-                        <p class="text-muted m-0">Ingrese el dinero base para iniciar operaciones</p>
+            <div class="col-lg-5">
+                <div class="card border-0 shadow" style="transition: all 0.3s ease;">
+                    <!-- Header Premium -->
+                    <div style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); padding: 40px 30px; text-align: center; color: white;">
+                        <i class="fas fa-cash-register" style="font-size: 48px; display: block; margin-bottom: 15px; opacity: 0.9;"></i>
+                        <h2 style="margin: 0 0 8px; font-weight: 800; font-size: 28px;">Apertura de Caja</h2>
+                        <p style="margin: 0; opacity: 0.9; font-size: 14px;">Ingrese el monto inicial para comenzar</p>
                     </div>
+
                     <div class="card-body p-5">
                         <form action="/caja/abrir" method="POST">
                             <div class="mb-4">
-                                <label class="form-label fw-bold fs-5">Monto Inicial (Sencillo)</label>
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-text bg-primary text-white fw-bold"><?= $config['moneda'] ?></span>
-                                    <input type="number" step="0.01" name="monto_inicial" class="form-control fw-bold text-primary" placeholder="0.00" required autofocus>
+                                <label class="form-label fw-bold text-uppercase text-muted small" style="letter-spacing: 0.5px;">
+                                    <i class="fas fa-coins"></i> Monto Inicial
+                                </label>
+                                <div class="input-group" style="height: 50px;">
+                                    <span class="input-group-text" style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%); color: white; font-weight: 700; border: none; font-size: 18px;">
+                                        <?= $config['moneda'] ?>
+                                    </span>
+                                    <input 
+                                        type="number" 
+                                        step="0.01" 
+                                        name="monto_inicial" 
+                                        class="form-control" 
+                                        placeholder="0.00" 
+                                        style="font-weight: 700; font-size: 18px; border: 2px solid #F97316;"
+                                        required 
+                                        autofocus
+                                    >
                                 </div>
                             </div>
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary btn-lg shadow">INICIAR TURNO</button>
-                            </div>
+                            <button type="submit" class="btn w-100" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; font-weight: 700; padding: 14px; border-radius: 8px; border: none; text-transform: uppercase; letter-spacing: 1px; font-size: 14px;">
+                                <i class="fas fa-play-circle"></i> INICIAR TURNO
+                            </button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="card shadow">
-            <div class="card-header bg-secondary text-white">
-                <h5 class="m-0"><i class="fas fa-history"></i> Historial de Cierres Recientes</h5>
-            </div>
-            <div class="card-body">
-                <table class="table table-hover table-data">
-                    <thead class="table-dark">
+        <!-- Historial -->
+        <div class="card border-0 shadow">
+            <div class="card-body p-0">
+                <div style="background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%); color: #1F2937; padding: 30px; display: flex; align-items: center; gap: 15px;">
+                    <i class="fas fa-history" style="font-size: 28px;"></i>
+                    <h3 style="margin: 0; font-weight: 700;">Historial de Cierres Recientes</h3>
+                </div>
+                <div class="table-responsive">
+                <table class="table table-hover align-middle table-data mb-0">
+                    <thead style="background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);">
                         <tr>
                             <th>Fecha Cierre</th>
                             <th>Cajero</th>
-                            <th>Inicial</th>
-                            <th>Ventas</th>
-                            <th>Gastos</th>
-                            <th>Esperado</th>
-                            <th>Real</th>
-                            <th>Cuadre</th>
+                            <th style="color: #d4af37;">Inicial</th>
+                            <th style="color: #ff6b35;">Ventas</th>
+                            <th style="color: #b71c1c;">Gastos</th>
+                            <th style="color: #1a1a1a;">Esperado</th>
+                            <th style="color: #1a1a1a;">Real</th>
+                            <th style="color: #1a1a1a;">Cuadre</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach($historial as $h): ?>
                             <?php if($h['estado'] == 'cerrada'): ?>
                             <tr>
-                                <td><?= date('d/m/Y H:i', strtotime($h['fecha_cierre'])) ?></td>
-                                <td><?= $h['cajero'] ?></td>
-                                <td><?= $config['moneda'] . number_format($h['monto_inicial'], 2) ?></td>
-                                <td class="text-success fw-bold">+<?= number_format($h['total_ventas'], 2) ?></td>
-                                <td class="text-danger fw-bold">-<?= number_format($h['total_gastos'], 2) ?></td>
+                                <td><small class="text-muted"><?= date('d/m/Y H:i', strtotime($h['fecha_cierre'])) ?></small></td>
+                                <td><strong><?= $h['cajero'] ?></strong></td>
+                                <td>
+                                    <span class="badge" style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);">
+                                        <?= $config['moneda'] . number_format($h['monto_inicial'], 2) ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge" style="background: linear-gradient(135deg, #ff6b35 0%, #ff5521 100%);">
+                                        +<?= number_format($h['total_ventas'], 2) ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge" style="background: linear-gradient(135deg, #b71c1c 0%, #8b1414 100%);">
+                                        -<?= number_format($h['total_gastos'], 2) ?>
+                                    </span>
+                                </td>
                                 
                                 <?php $sistema = $h['monto_inicial'] + $h['total_ventas'] - $h['total_gastos']; ?>
-                                <td class="fw-bold bg-light"><?= $config['moneda'] . number_format($sistema, 2) ?></td>
+                                <td style="font-weight: 700; background: #f8f8f8;">
+                                    <?= $config['moneda'] . number_format($sistema, 2) ?>
+                                </td>
                                 
-                                <td><?= $config['moneda'] . number_format($h['monto_final'], 2) ?></td>
+                                <td style="font-weight: 700;">
+                                    <?= $config['moneda'] . number_format($h['monto_final'], 2) ?>
+                                </td>
                                 
                                 <td>
                                     <?php if($h['diferencia'] == 0): ?>
-                                        <span class="badge bg-success"><i class="fas fa-check"></i> OK</span>
+                                        <span class="badge" style="background: linear-gradient(135deg, #1a8917 0%, #135a0e 100%);">
+                                            <i class="fas fa-check-circle"></i> OK
+                                        </span>
                                     <?php elseif($h['diferencia'] < 0): ?>
-                                        <span class="badge bg-danger">Falta <?= $h['diferencia'] ?></span>
+                                        <span class="badge" style="background: linear-gradient(135deg, #b71c1c 0%, #8b1414 100%);">
+                                            <i class="fas fa-minus-circle"></i> Falta
+                                        </span>
                                     <?php else: ?>
-                                        <span class="badge bg-warning text-dark">Sobra <?= $h['diferencia'] ?></span>
+                                        <span class="badge" style="background: linear-gradient(135deg, #ff6b35 0%, #ff5521 100%);">
+                                            <i class="fas fa-plus-circle"></i> Sobra
+                                        </span>
                                     <?php endif; ?>
                                 </td>
                             </tr>
@@ -92,6 +139,7 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

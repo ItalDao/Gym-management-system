@@ -3,33 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suscripciones - Iron Gym</title>
+    <title>Suscripciones - <?= $config['nombre_sistema'] ?? 'Gym' ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body class="bg-light">
 
     <?php require_once '../app/views/inc/navbar.php'; ?>
 
-    <div class="container mt-5 mb-5">
-        <div class="card shadow">
-            <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
-                <h3><i class="fas fa-file-invoice-dollar"></i> Suscripciones Activas</h3>
-                
+    <div class="container mt-4 mb-5">
+        <!-- Encabezado -->
+        <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <a href="/suscripciones/exportarExcel" class="btn btn-success btn-sm me-2">
+                    <h1 class="mb-2"><i class="fas fa-file-invoice-dollar" style="color: #22C55E;"></i> Suscripciones Activas</h1>
+                    <p class="text-muted">Control de membresías activas y renovaciones</p>
+                </div>
+                <div>
+                    <a href="/suscripciones/exportarExcel" class="btn btn-success me-2">
                         <i class="fas fa-file-excel"></i> Exportar Excel
                     </a>
-                    <a href="/suscripciones/crear" class="btn btn-light btn-sm">
+                    <a href="/suscripciones/crear" class="btn btn-primary">
                         <i class="fas fa-plus"></i> Nueva Venta
                     </a>
                 </div>
             </div>
+        </div>
 
-            <div class="card-body">
-                <table class="table table-hover table-bordered align-middle table-data">
-                    <thead class="table-dark">
+        <div class="card border-0 shadow">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                <table class="table table-hover align-middle table-data mb-0">
+                    <thead style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white;">
                         <tr>
                             <th>ID</th>
                             <th>Socio</th>
@@ -49,33 +56,40 @@
                                 $vencida = ($hoy > $sub['fecha_fin'] || $sub['estado'] == 'vencida');
                             ?>
                             <tr class="<?= $vencida ? 'table-danger' : '' ?>">
-                                <td><?= $sub['id'] ?></td>
-                                <td><?= $sub['nombre_socio'] ?></td>
-                                
+                                <td><small class="text-muted">#<?= $sub['id'] ?></small></td>
                                 <td>
-                                    <?= $sub['nombre_plan'] ?> 
-                                    (<?= $config['moneda'] ?><?= $sub['precio'] ?>)
+                                    <strong style="color: #b71c1c;"><?= $sub['nombre_socio'] ?></strong>
                                 </td>
-                                
+                                <td>
+                                    <?= $sub['nombre_plan'] ?><br>
+                                    <span class="badge" style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);">
+                                        <?= $config['moneda'] ?><?= $sub['precio'] ?>
+                                    </span>
+                                </td>
                                 <td><?= date('d/m/Y', strtotime($sub['fecha_inicio'])) ?></td>
-                                <td><strong><?= date('d/m/Y', strtotime($sub['fecha_fin'])) ?></strong></td>
+                                <td>
+                                    <strong><?= date('d/m/Y', strtotime($sub['fecha_fin'])) ?></strong>
+                                </td>
                                 <td>
                                     <?php if($vencida): ?>
-                                        <span class="badge bg-danger">Vencida</span>
+                                        <span class="badge" style="background: linear-gradient(135deg, #b71c1c 0%, #8b1414 100%);">Vencida</span>
                                     <?php else: ?>
-                                        <span class="badge bg-success">Activa</span>
+                                        <span class="badge" style="background: linear-gradient(135deg, #ff6b35 0%, #ff5521 100%);">Activa</span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
                                     <a href="/comprobante/generar/<?= $sub['id'] ?>" 
                                        target="_blank" 
-                                       class="btn btn-primary btn-sm" title="Imprimir PDF">
+                                       class="btn btn-sm" 
+                                       style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%); color: white; border: none;"
+                                       title="Imprimir PDF">
                                         <i class="fas fa-print"></i>
                                     </a>
 
                                     <?php if(!$vencida): ?>
                                     <a href="/suscripciones/cancelar/<?= $sub['id'] ?>" 
-                                       class="btn btn-danger btn-sm btn-confirm"
+                                       class="btn btn-sm btn-confirm"
+                                       style="background: linear-gradient(135deg, #b71c1c 0%, #8b1414 100%); color: white; border: none;"
                                        data-title="¿Cancelar suscripción de <?= $sub['nombre_socio'] ?>?"
                                        title="Cancelar Suscripción">
                                         <i class="fas fa-times-circle"></i>
@@ -87,6 +101,7 @@
                         <?php endif; ?>
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

@@ -2,10 +2,25 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Progreso del Socio</title>
+    <title>Progreso del Socio - <?= $config['nombre_sistema'] ?? 'Gym' ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .pestaña-medida-premium {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: white;
+        }
+        .pestaña-rutina-premium {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff5521 100%);
+            color: white;
+        }
+        .tab-link-active {
+            border-bottom: 4px solid #b71c1c;
+            color: #b71c1c !important;
+        }
+    </style>
 </head>
 <body class="bg-light">
 
@@ -13,151 +28,186 @@
 
     <div class="container mt-4 mb-5">
         
-        <div class="card shadow mb-4">
-            <div class="card-body d-flex align-items-center">
-                <div class="me-3">
+        <!-- Header Premium con datos del socio -->
+        <div class="card border-0 shadow mb-4">
+            <div style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); padding: 30px; display: flex; align-items: center; gap: 30px; border-radius: 15px 15px 0 0; color: white;">
+                <div>
                     <?php if(!empty($socio['foto'])): ?>
-                        <img src="/img/socios/<?= $socio['foto'] ?>" class="rounded-circle" width="80" height="80" style="object-fit:cover;">
+                        <img src="/img/socios/<?= $socio['foto'] ?>" class="rounded-circle" width="100" height="100" style="object-fit:cover; border: 4px solid white;">
                     <?php else: ?>
-                        <i class="fas fa-user-circle fa-4x text-secondary"></i>
+                        <i class="fas fa-user-circle" style="font-size: 100px; color: white;"></i>
                     <?php endif; ?>
                 </div>
-                <div>
-                    <h2 class="mb-0"><?= $socio['nombre'] ?></h2>
-                    <p class="text-muted m-0"><i class="fas fa-id-card"></i> DNI: <?= $socio['dni'] ?> | <i class="fas fa-phone"></i> <?= $socio['telefono'] ?></p>
+                <div style="flex: 1;">
+                    <h2 style="margin: 0 0 8px; font-weight: 800;"><?= $socio['nombre'] ?></h2>
+                    <p style="margin: 0 0 4px; opacity: 0.9;"><i class="fas fa-id-card"></i> DNI: <?= $socio['dni'] ?></p>
+                    <p style="margin: 0; opacity: 0.9;"><i class="fas fa-phone"></i> <?= $socio['telefono'] ?></p>
                 </div>
-                <div class="ms-auto">
-                    <a href="/socios/index" class="btn btn-outline-secondary">Volver a Lista</a>
+                <div>
+                    <a href="/socios/index" style="background: rgba(255, 255, 255, 0.2); border: 2px solid white; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease;">
+                        <i class="fas fa-arrow-left"></i> Volver a Lista
+                    </a>
                 </div>
             </div>
         </div>
 
-        <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
-            <li class="nav-item">
-                <button class="nav-link active" id="medidas-tab" data-bs-toggle="tab" data-bs-target="#medidas" type="button">
+        <!-- Tabs Premium -->
+        <ul class="nav mb-4" id="myTab" role="tablist" style="border-bottom: none;">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active tab-link-active" id="medidas-tab" data-bs-toggle="tab" data-bs-target="#medidas" type="button" style="padding: 15px 30px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border: none; background: none; color: #999; transition: all 0.3s ease;">
                     <i class="fas fa-weight"></i> Medidas y Gráficos
                 </button>
             </li>
-            <li class="nav-item">
-                <button class="nav-link" id="rutina-tab" data-bs-toggle="tab" data-bs-target="#rutina" type="button">
-                    <i class="fas fa-dumbbell"></i> Rutina de Entrenamiento
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="rutina-tab" data-bs-toggle="tab" data-bs-target="#rutina" type="button" style="padding: 15px 30px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border: none; background: none; color: #999; transition: all 0.3s ease;">
+                    <i class="fas fa-dumbbell"></i> Rutina Semanal
                 </button>
             </li>
         </ul>
 
         <div class="tab-content" id="myTabContent">
             
+            <!-- TAB: Medidas -->
             <div class="tab-pane fade show active" id="medidas">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card shadow mb-3">
-                            <div class="card-header bg-primary text-white">Nueva Medida</div>
-                            <div class="card-body">
+                    <!-- Formulario Nuevo Registro -->
+                    <div class="col-lg-4">
+                        <div class="card border-0 shadow">
+                            <div class="pestaña-medida-premium" style="padding: 30px; text-align: center; border-radius: 15px 15px 0 0;">
+                                <i class="fas fa-plus-circle" style="font-size: 32px; display: block; margin-bottom: 10px;"></i>
+                                <h5 style="margin: 0; font-weight: 700;">Nueva Medida</h5>
+                            </div>
+                            <div class="card-body p-4">
                                 <form action="/progreso/guardar_medida" method="POST">
                                     <input type="hidden" name="socio_id" value="<?= $socio['id'] ?>">
                                     
-                                    <div class="mb-2">
-                                        <label>Fecha</label>
-                                        <input type="date" name="fecha" class="form-control" value="<?= date('Y-m-d') ?>" required>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold text-uppercase small text-muted" style="letter-spacing: 0.5px;">
+                                            <i class="fas fa-calendar"></i> Fecha
+                                        </label>
+                                        <input type="date" name="fecha" class="form-control" style="border: 2px solid #e0e0e0; padding: 10px 12px; border-radius: 8px;" value="<?= date('Y-m-d') ?>" required>
                                     </div>
+
                                     <div class="row">
-                                        <div class="col-6 mb-2">
-                                            <label>Peso (Kg)</label>
-                                            <input type="number" step="0.01" name="peso" class="form-control" required>
+                                        <div class="col-6 mb-3">
+                                            <label class="form-label fw-bold text-uppercase small text-muted" style="letter-spacing: 0.5px;">Peso (Kg)</label>
+                                            <input type="number" step="0.01" name="peso" class="form-control" style="border: 2px solid #e0e0e0; padding: 10px 12px; border-radius: 8px;" required>
                                         </div>
-                                        <div class="col-6 mb-2">
-                                            <label>% Grasa</label>
-                                            <input type="number" step="0.01" name="grasa" class="form-control">
+                                        <div class="col-6 mb-3">
+                                            <label class="form-label fw-bold text-uppercase small text-muted" style="letter-spacing: 0.5px;">% Grasa</label>
+                                            <input type="number" step="0.01" name="grasa" class="form-control" style="border: 2px solid #e0e0e0; padding: 10px 12px; border-radius: 8px;">
                                         </div>
-                                        <div class="col-6 mb-2">
-                                            <label>Cintura (cm)</label>
-                                            <input type="number" step="0.01" name="cintura" class="form-control">
+                                        <div class="col-6 mb-3">
+                                            <label class="form-label fw-bold text-uppercase small text-muted" style="letter-spacing: 0.5px;">Cintura (cm)</label>
+                                            <input type="number" step="0.01" name="cintura" class="form-control" style="border: 2px solid #e0e0e0; padding: 10px 12px; border-radius: 8px;">
                                         </div>
-                                        <div class="col-6 mb-2">
-                                            <label>Brazo (cm)</label>
-                                            <input type="number" step="0.01" name="brazo" class="form-control">
+                                        <div class="col-6 mb-3">
+                                            <label class="form-label fw-bold text-uppercase small text-muted" style="letter-spacing: 0.5px;">Brazo (cm)</label>
+                                            <input type="number" step="0.01" name="brazo" class="form-control" style="border: 2px solid #e0e0e0; padding: 10px 12px; border-radius: 8px;">
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary w-100 mt-3">Registrar</button>
+                                    <button style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%); color: white; font-weight: 700; width: 100%; padding: 12px; border: none; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 10px;">
+                                        <i class="fas fa-save"></i> Registrar Medida
+                                    </button>
                                 </form>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-8">
+                    <!-- Gráficos y Tabla -->
+                    <div class="col-lg-8">
                         
-                        <div class="card shadow mb-4">
-                            <div class="card-body">
+                        <!-- Gráfico de Peso -->
+                        <div class="card border-0 shadow mb-4">
+                            <div style="background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%); padding: 20px; border-radius: 15px 15px 0 0;">
+                                <h6 style="margin: 0; font-weight: 700; color: #1a1a1a; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px;">
+                                    <i class="fas fa-chart-line" style="color: #d4af37;"></i> Evolución de Peso
+                                </h6>
+                            </div>
+                            <div class="card-body p-4">
                                 <canvas id="pesoChart" style="max-height: 250px;"></canvas>
                             </div>
                         </div>
 
-                        <div class="card shadow">
-                            <div class="card-header">Historial</div>
+                        <!-- Historial de Medidas -->
+                        <div class="card border-0 shadow">
+                            <div style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); padding: 20px; color: white; border-radius: 15px 15px 0 0;">
+                                <h6 style="margin: 0; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px;">
+                                    <i class="fas fa-list"></i> Historial Completo
+                                </h6>
+                            </div>
                             <div class="card-body p-0">
-                                <table class="table table-striped mb-0">
-                                    <thead class="table-dark">
+                                <div class="table-responsive">
+                                <table class="table table-hover align-middle mb-0">
+                                    <thead style="background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);">
                                         <tr>
                                             <th>Fecha</th>
-                                            <th>Peso</th>
+                                            <th style="color: #22C55E;">Peso</th>
                                             <th>Grasa</th>
                                             <th>Cintura</th>
                                             <th>Brazo</th>
-                                            <th></th>
+                                            <th style="text-align: center;">Acción</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach($medidas as $m): ?>
                                         <tr>
-                                            <td><?= date('d/m/Y', strtotime($m['fecha'])) ?></td>
-                                            <td><?= $m['peso'] ?> kg</td>
+                                            <td><small class="text-muted"><?= date('d/m/Y', strtotime($m['fecha'])) ?></small></td>
+                                            <td><strong style="color: #d4af37;"><?= $m['peso'] ?> kg</strong></td>
                                             <td><?= $m['grasa'] ?> %</td>
                                             <td><?= $m['cintura'] ?> cm</td>
                                             <td><?= $m['brazo'] ?> cm</td>
-                                            <td>
-                                                <a href="/progreso/eliminar_medida/<?= $m['id'] ?>/<?= $socio['id'] ?>" class="text-danger" onclick="return confirm('¿Borrar?');"><i class="fas fa-trash"></i></a>
+                                            <td style="text-align: center;">
+                                                <a href="/progreso/eliminar_medida/<?= $m['id'] ?>/<?= $socio['id'] ?>" style="color: #b71c1c; text-decoration: none; transition: all 0.3s ease;" onclick="return confirm('¿Eliminar esta medida?');"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- TAB: Rutina Semanal -->
             <div class="tab-pane fade" id="rutina">
                 <form action="/progreso/guardar_rutina" method="POST">
                     <input type="hidden" name="socio_id" value="<?= $socio['id'] ?>">
                     
-                    <div class="row">
+                    <div class="row mb-4">
                         <?php 
                             $dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
                             $campos = ['dia1', 'dia2', 'dia3', 'dia4', 'dia5', 'dia6'];
+                            $colores = ['#b71c1c', '#ff6b35', '#d4af37', '#1a8917', '#0066cc', '#8b00ff'];
                         ?>
                         
                         <?php for($i=0; $i<6; $i++): ?>
                         <div class="col-md-4 mb-3">
-                            <div class="card h-100 border-success">
-                                <div class="card-header bg-success text-white text-center fw-bold">
-                                    <?= $dias[$i] ?>
+                            <div class="card border-0 shadow h-100">
+                                <div style="background: linear-gradient(135deg, <?= $colores[$i] ?> 0%, <?= $colores[$i] ?>cc 100%); padding: 15px; text-align: center; color: white; border-radius: 15px 15px 0 0; font-weight: 700;">
+                                    <i class="fas fa-calendar-day"></i> <?= $dias[$i] ?>
                                 </div>
-                                <div class="card-body p-2">
-                                    <textarea name="<?= $campos[$i] ?>" class="form-control border-0" rows="5" placeholder="Ej: 4x12 Press Banca..."><?= $rutina[$campos[$i]] ?? '' ?></textarea>
+                                <div class="card-body p-3">
+                                    <textarea name="<?= $campos[$i] ?>" class="form-control" style="border: 2px solid #e0e0e0; resize: vertical; min-height: 120px; border-radius: 8px; padding: 12px; font-size: 13px;" placeholder="Ej: 4x12 Press Banca&#10;3x10 Dominadas..."><?= $rutina[$campos[$i]] ?? '' ?></textarea>
                                 </div>
                             </div>
                         </div>
                         <?php endfor; ?>
                         
                         <div class="col-12 mb-3">
-                            <label class="fw-bold">Observaciones Generales:</label>
-                            <input type="text" name="observaciones" class="form-control" value="<?= $rutina['observaciones'] ?? '' ?>" placeholder="Ej: Enfocarse en la técnica, beber mucha agua...">
+                            <label class="form-label fw-bold text-uppercase text-muted small" style="letter-spacing: 0.5px;">
+                                <i class="fas fa-sticky-note"></i> Observaciones Generales
+                            </label>
+                            <input type="text" name="observaciones" class="form-control" style="border: 2px solid #e0e0e0; padding: 12px 16px; border-radius: 8px;" value="<?= $rutina['observaciones'] ?? '' ?>" placeholder="Ej: Enfocarse en la técnica, beber mucha agua, descansar bien...">
                         </div>
                     </div>
 
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-success btn-lg"><i class="fas fa-save"></i> GUARDAR RUTINA SEMANAL</button>
+                    <div style="display: grid;">
+                        <button type="submit" style="background: linear-gradient(135deg, #ff6b35 0%, #ff5521 100%); color: white; font-weight: 700; padding: 16px; border: none; border-radius: 10px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer;">
+                            <i class="fas fa-save"></i> GUARDAR RUTINA SEMANAL
+                        </button>
                     </div>
                 </form>
             </div>
@@ -174,16 +224,43 @@
                 datasets: [{
                     label: 'Evolución de Peso (Kg)',
                     data: <?= json_encode($dataPeso) ?>,
-                    borderColor: 'rgb(75, 192, 192)',
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    tension: 0.3,
-                    fill: true
+                    borderColor: '#d4af37',
+                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#d4af37',
+                    pointBorderColor: 'white',
+                    pointBorderWidth: 2,
+                    pointHoverRadius: 8
                 }]
             },
-            options: { responsive: true }
+            options: { 
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: { weight: 'bold', size: 12 },
+                            color: '#1a1a1a'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: { color: '#f0f0f0' },
+                        ticks: { color: '#666' }
+                    },
+                    x: {
+                        grid: { color: '#f0f0f0' },
+                        ticks: { color: '#666' }
+                    }
+                }
+            }
         });
 
-        // Script pequeño para mantener la pestaña activa si recargas (opcional)
+        // Mantener pestaña activa si recargas
         if(window.location.href.indexOf("tab=rutina") > -1) {
             var tabTrigger = new bootstrap.Tab(document.getElementById('rutina-tab'));
             tabTrigger.show();
@@ -191,5 +268,3 @@
     </script>
 
     <?php require_once '../app/views/inc/footer.php'; ?>
-</body>
-</html>

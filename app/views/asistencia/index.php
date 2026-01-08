@@ -2,19 +2,21 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Control de Acceso - Iron Gym</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Acceso - <?= $config['nombre_sistema'] ?? 'Gym' ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <style>
-        .big-input { font-size: 2rem; text-align: center; letter-spacing: 5px; }
-        /* Estilo para la foto gigante */
+        .big-input { font-size: 2rem; text-align: center; letter-spacing: 5px; font-weight: bold; }
         .foto-validacion { 
             width: 220px; height: 220px; object-fit: cover; 
-            border: 6px solid #fff; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2); 
+            border: 5px solid #22C55E;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25); 
         }
         .card-verificacion { transform: scale(1.02); transition: all 0.3s; }
+        .btn-lg { padding: 15px 20px; font-size: 18px; font-weight: 600; }
     </style>
 </head>
 <body class="bg-light">
@@ -24,17 +26,23 @@
     <div class="container mt-4">
         
         <?php if(!empty($mensaje_exito)): ?>
-            <div class="alert alert-success text-center shadow fs-4 mb-4 border-0">
-                <?= $mensaje_exito ?>
+            <div class="alert alert-success text-center shadow fw-bold mb-4 border-0" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; padding: 20px; border-radius: 12px; animation: slideDown 0.3s ease;">
+                <i class="fas fa-check-circle" style="font-size: 24px; margin-right: 8px;"></i> <?= $mensaje_exito ?>
                 <script>
-                    setTimeout(function() { window.location.href = '/asistencia/index'; }, 1500);
+                    setTimeout(function() { window.location.href = '/asistencia/index'; }, 2500);
                 </script>
             </div>
+            <style>
+                @keyframes slideDown {
+                    from { transform: translateY(-20px); opacity: 0; }
+                    to { transform: translateY(0); opacity: 1; }
+                }
+            </style>
         <?php endif; ?>
 
         <?php if(!empty($error_busqueda)): ?>
             <div class="alert alert-danger text-center shadow fw-bold mb-4">
-                <?= $error_busqueda ?>
+                <i class="fas fa-exclamation-circle"></i> <?= $error_busqueda ?>
             </div>
         <?php endif; ?>
 
@@ -44,8 +52,8 @@
                 <?php if(isset($perfil_validacion)): ?>
                     
                     <div class="card shadow-lg mb-4 border-0 card-verificacion">
-                        <div class="card-header bg-warning text-dark text-center py-2">
-                            <h5 class="m-0 fw-bold"><i class="fas fa-eye"></i> VERIFICACIÓN VISUAL REQUERIDA</h5>
+                        <div class="card-header" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; padding: 20px;">
+                            <h5 class="m-0 fw-bold text-center"><i class="fas fa-eye"></i> VERIFICACIÓN REQUERIDA</h5>
                         </div>
                         
                         <div class="card-body p-4 text-center bg-white">
@@ -58,23 +66,23 @@
                                 </div>
                             <?php endif; ?>
 
-                            <h2 class="fw-bold display-6"><?= $perfil_validacion['nombre'] ?></h2>
+                            <h2 class="fw-bold display-6" style="color: #1a1a1a;"><?= $perfil_validacion['nombre'] ?></h2>
                             
                             <?php if($perfil_validacion['estado_socio'] != 'activo'): ?>
                                 <div class="alert alert-danger mt-3 fw-bold">
-                                    ⛔ ACCESO DENEGADO: SOCIO INACTIVO
+                                    <i class="fas fa-ban"></i> ACCESO DENEGADO: SOCIO INACTIVO
                                 </div>
                             
                             <?php elseif(!$perfil_validacion['tiene_acceso']): ?>
                                 <div class="alert alert-danger mt-3 fw-bold">
-                                    ⚠️ MEMBRESÍA VENCIDA O NO EXISTENTE
+                                    <i class="fas fa-exclamation-triangle"></i> MEMBRESÍA VENCIDA O NO EXISTENTE
                                 </div>
                             
                             <?php else: ?>
                                 <div class="alert alert-success mt-3">
-                                    <i class="fas fa-check-circle"></i> PLAN ACTIVO 
+                                    <i class="fas fa-check-circle"></i> <strong>PLAN ACTIVO</strong>
                                     <br>
-                                    <small>Vence: <?= $perfil_validacion['fecha_vence'] ?> (Quedan <?= $perfil_validacion['dias_restantes'] ?> días)</small>
+                                    <small>Vence: <?= $perfil_validacion['fecha_vence'] ?> (<?= $perfil_validacion['dias_restantes'] ?> días)</small>
                                 </div>
                             <?php endif; ?>
 
@@ -83,7 +91,7 @@
 
                             <div class="row gx-2">
                                 <div class="col-6">
-                                    <a href="/asistencia/index" class="btn btn-secondary btn-lg w-100 py-3">
+                                    <a href="/asistencia/index" class="btn btn-outline-secondary btn-lg w-100 py-3">
                                         <i class="fas fa-times"></i> RECHAZAR
                                     </a>
                                 </div>
@@ -91,13 +99,13 @@
                                     <?php if($perfil_validacion['tiene_acceso'] && $perfil_validacion['estado_socio'] == 'activo'): ?>
                                         <form action="/asistencia/registrar" method="POST">
                                             <input type="hidden" name="socio_id" value="<?= $perfil_validacion['id'] ?>">
-                                            <button type="submit" class="btn btn-success btn-lg w-100 py-3 fw-bold shadow">
+                                            <button type="submit" class="btn btn-primary btn-lg w-100 py-3 fw-bold shadow">
                                                 <i class="fas fa-check"></i> CONFIRMAR
                                             </button>
                                         </form>
                                     <?php else: ?>
                                         <button class="btn btn-danger btn-lg w-100 py-3 disabled" disabled>
-                                            NO HABILITADO
+                                            <i class="fas fa-lock"></i> NO HABILITADO
                                         </button>
                                     <?php endif; ?>
                                 </div>
@@ -109,20 +117,23 @@
                 <?php else: ?>
 
                     <div class="card shadow-lg mb-4 border-0">
-                        <div class="card-header bg-dark text-white text-center py-3">
-                            <h3><i class="fas fa-id-card-alt"></i> Control de Acceso</h3>
+                        <div class="card-header" style="background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%); color: #1F2937; padding: 20px; border-bottom: 2px solid #DC2626;">
+                            <h3 class="m-0 text-center"><i class="fas fa-id-card-alt"></i> Control de Acceso</h3>
                         </div>
                         <div class="card-body p-5 text-center">
                             <div class="mb-4">
-                                <i class="fas fa-wifi fa-3x text-muted mb-3"></i>
-                                <h5 class="text-muted">Esperando lectura de DNI...</h5>
+                                <i class="fas fa-dumbbell fa-4x" style="color: #22C55E; opacity: 0.3;"></i>
+                                <h5 class="text-muted mt-3">Escanea tu DNI para ingresar</h5>
                             </div>
 
                             <form action="/asistencia/validar" method="POST">
                                 <input type="text" name="dni" class="form-control big-input" 
-                                       placeholder="DNI..." autocomplete="off" autofocus required>
+                                       placeholder="DNI..." autocomplete="off" autofocus required
+                                       style="border: 2px solid #22C55E;">
                                 <div class="d-grid mt-4">
-                                    <button type="submit" class="btn btn-primary btn-lg">BUSCAR SOCIO</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-search"></i> BUSCAR SOCIO
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -134,30 +145,32 @@
         </div>
 
         <div class="card shadow border-0 mt-3">
-            <div class="card-header bg-white">
-                <h5 class="text-secondary"><i class="fas fa-history"></i> Ingresos Confirmados Hoy</h5>
+            <div class="card-header">
+                <h5 class="m-0"><i class="fas fa-history" style="color: #22C55E;"></i> Ingresos Confirmados Hoy</h5>
             </div>
-            <div class="card-body">
-                <table class="table table-striped table-hover table-data">
-                    <thead>
-                        <tr>
-                            <th>Hora</th>
-                            <th>Estado</th>
-                            <th>Socio</th>
-                            <th>DNI</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach($historial as $h): ?>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-data mb-0 align-middle">
+                        <thead style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white;">
                             <tr>
-                                <td class="fw-bold text-primary align-middle"><?= date('H:i:s', strtotime($h['fecha_hora'])) ?></td>
-                                <td class="align-middle"><span class="badge bg-success">Ingresó</span></td>
-                                <td class="align-middle"><?= $h['nombre'] ?></td>
-                                <td class="align-middle"><?= $h['dni'] ?></td>
+                                <th>Hora</th>
+                                <th>Socio</th>
+                                <th>DNI</th>
+                                <th>Estado</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach($historial as $h): ?>
+                                <tr>
+                                    <td class="fw-bold" style="color: #22C55E;"><?= date('H:i:s', strtotime($h['fecha_hora'])) ?></td>
+                                    <td><?= $h['nombre'] ?></td>
+                                    <td><code><?= $h['dni'] ?></code></td>
+                                    <td><span class="badge" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);">Ingresó</span></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 

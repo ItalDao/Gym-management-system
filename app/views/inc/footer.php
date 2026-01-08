@@ -1,45 +1,95 @@
+<footer class="footer mt-auto py-4 bg-dark text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-3 mb-md-0">
+                <h6 class="fw-bold mb-2"><i class="fas fa-dumbbell"></i> <?= $config['nombre_sistema'] ?? 'Gym System' ?></h6>
+                <p class="text-muted small mb-0">Sistema de administración completo para tu gimnasio</p>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <h6 class="fw-bold mb-2"><i class="fas fa-info-circle"></i> Información</h6>
+                <ul class="list-unstyled text-muted small">
+                    <li><a href="#" class="text-decoration-none text-muted">Ayuda</a></li>
+                    <li><a href="#" class="text-decoration-none text-muted">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h6 class="fw-bold mb-2"><i class="fas fa-copyright"></i> Derechos</h6>
+                <p class="text-muted small mb-0">&copy; <span id="year"></span> <?= $config['nombre_sistema'] ?? 'Gym System' ?>. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <hr class="my-3 bg-secondary">
+        <div class="text-center text-muted small">
+            <p class="mb-0">Sistema desarrollado con profesionalismo • Versión 1.0</p>
+        </div>
+    </div>
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    // Configurar año automáticamente
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    <script>
-        $(document).ready(function() {
-            // 1. Inicializar DataTables en cualquier tabla con la clase "table-data"
-            $('.table-data').DataTable({
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
-                },
-                "pageLength": 5, // Mostrar 5 registros por página por defecto
-                "lengthMenu": [[5, 10, 25, 50], [5, 10, 25, 50]]
-            });
-
-            // 2. Lógica para SweetAlert al Eliminar/Desactivar
-            $('.btn-confirm').on('click', function(e) {
-                e.preventDefault(); // Detener el enlace
-                const href = $(this).attr('href'); // Obtener la ruta
-                const title = $(this).data('title') || '¿Estás seguro?';
-
-                Swal.fire({
-                    title: title,
-                    text: "Esta acción cambiará el estado del registro.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Sí, confirmar',
-                    cancelButtonText: 'Cancelar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = href; // Redirigir si confirma
+    $(document).ready(function() {
+        // Inicializar DataTables
+        $('.table-data').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+            },
+            "pageLength": 10,
+            "lengthMenu": [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],
+            "dom": "<'row mb-3'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                   "<'row'<'col-sm-12'tr>>" +
+                   "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            "drawCallback": function() {
+                $('[data-bs-toggle="tooltip"]').each(function() {
+                    var tooltip = bootstrap.Tooltip.getInstance(this);
+                    if (!tooltip) {
+                        new bootstrap.Tooltip(this);
                     }
-                })
+                });
+            }
+        });
+
+        // SweetAlert para confirmaciones
+        $('.btn-confirm').on('click', function(e) {
+            e.preventDefault();
+            const href = $(this).attr('href');
+            const title = $(this).data('title') || '¿Estás seguro?';
+
+            Swal.fire({
+                title: title,
+                text: "Esta acción no se puede deshacer.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#667eea',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: '<i class="fas fa-check"></i> Sí, confirmar',
+                cancelButtonText: '<i class="fas fa-times"></i> Cancelar',
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-primary me-2',
+                    cancelButton: 'btn btn-secondary'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = href;
+                }
             });
         });
-    </script>
+
+        // Animación de tooltips
+        $('[data-bs-toggle="tooltip"]').each(function() {
+            var tooltip = bootstrap.Tooltip.getInstance(this);
+            if (!tooltip) {
+                new bootstrap.Tooltip(this);
+            }
+        });
+    });
+</script>
 </body>
 </html>
