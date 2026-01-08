@@ -18,7 +18,7 @@
         <div class="mb-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h1 class="mb-2"><i class="fas fa-money-bill-wave" style="color: #DC2626;"></i> Registro de Gastos</h1>
+                    <h1 class="mb-2"><i class="fas fa-money-bill-wave" style="color: #F97316;"></i> Registro de Gastos</h1>
                     <p class="text-muted">Administra los gastos operativos del gymnasio</p>
                 </div>
                 <a href="/gastos/crear" class="btn btn-primary">
@@ -31,7 +31,7 @@
             <div class="card-body p-0">
                 <div class="table-responsive">
                 <table class="table table-hover align-middle table-data mb-0">
-                    <thead style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white;">
+                    <thead style="background: linear-gradient(135deg, #F97316 0%, #DC2626 100%); color: white;">
                         <tr>
                             <th>Fecha</th>
                             <th>Descripción</th>
@@ -49,7 +49,7 @@
                                 <strong><?= $g['descripcion'] ?></strong>
                             </td>
                             <td>
-                                <span class="badge" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);">
+                                <span class="badge" style="background: linear-gradient(135deg, #F97316 0%, #DC2626 100%);">
                                     -<?= $config['moneda'] ?> <?= number_format($g['monto'], 2) ?>
                                 </span>
                             </td>

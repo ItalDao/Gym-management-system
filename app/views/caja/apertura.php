@@ -82,7 +82,7 @@
                             <th>Cajero</th>
                             <th style="color: #F97316;">Inicial</th>
                             <th style="color: #F97316;">Ventas</th>
-                            <th style="color: #DC2626;">Gastos</th>
+                            <th style="color: #F97316;">Gastos</th>
                             <th style="color: #1a1a1a;">Esperado</th>
                             <th style="color: #1a1a1a;">Real</th>
                             <th style="color: #1a1a1a;">Cuadre</th>

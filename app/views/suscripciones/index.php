@@ -18,7 +18,7 @@
         <div class="mb-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h1 class="mb-2"><i class="fas fa-file-invoice-dollar" style="color: #DC2626;"></i> Suscripciones Activas</h1>
+                    <h1 class="mb-2"><i class="fas fa-file-invoice-dollar" style="color: #8B5CF6;"></i> Suscripciones Activas</h1>
                     <p class="text-muted">Control de membresías activas y renovaciones</p>
                 </div>
                 <div>
@@ -36,7 +36,7 @@
             <div class="card-body p-0">
                 <div class="table-responsive">
                 <table class="table table-hover align-middle table-data mb-0">
-                    <thead style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white;">
+                    <thead style="background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%); color: white;">
                         <tr>
                             <th>ID</th>
                             <th>Socio</th>
@@ -58,7 +58,7 @@
                             <tr class="<?= $vencida ? 'table-danger' : '' ?>">
                                 <td><small class="text-muted">#<?= $sub['id'] ?></small></td>
                                 <td>
-                                    <strong style="color: #DC2626;"><?= $sub['nombre_socio'] ?></strong>
+                                    <strong style="color: #8B5CF6;"><?= $sub['nombre_socio'] ?></strong>
                                 </td>
                                 <td>
                                     <?= $sub['nombre_plan'] ?><br>
@@ -72,9 +72,9 @@
                                 </td>
                                 <td>
                                     <?php if($vencida): ?>
-                                        <span class="badge" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);">Vencida</span>
+                                        <span class="badge" style="background: linear-gradient(135deg, #7F1D1D 0%, #5F0f0f 100%);">Vencida</span>
                                     <?php else: ?>
-                                        <span class="badge" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);">Activa</span>
+                                        <span class="badge" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">Activa</span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
@@ -89,7 +89,7 @@
                                     <?php if(!$vencida): ?>
                                     <a href="/suscripciones/cancelar/<?= $sub['id'] ?>" 
                                        class="btn btn-sm btn-confirm"
-                                       style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; border: none;"
+                                       style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); color: white; border: none;"
                                        data-title="¿Cancelar suscripción de <?= $sub['nombre_socio'] ?>?"
                                        title="Cancelar Suscripción">
                                         <i class="fas fa-times-circle"></i>

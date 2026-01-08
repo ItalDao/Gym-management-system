@@ -12,7 +12,7 @@
         .big-input { font-size: 2rem; text-align: center; letter-spacing: 5px; font-weight: bold; }
         .foto-validacion { 
             width: 220px; height: 220px; object-fit: cover; 
-            border: 5px solid #DC2626;
+            border: 5px solid #3B82F6;
             box-shadow: 0 8px 20px rgba(0,0,0,0.25); 
         }
         .card-verificacion { transform: scale(1.02); transition: all 0.3s; }
@@ -26,11 +26,8 @@
     <div class="container mt-4">
         
         <?php if(!empty($mensaje_exito)): ?>
-            <div class="alert alert-success text-center shadow fw-bold mb-4 border-0" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; padding: 20px; border-radius: 12px; animation: slideDown 0.3s ease;">
+            <div class="alert alert-success text-center shadow fw-bold mb-4 border-0" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; padding: 20px; border-radius: 12px; animation: slideDown 0.3s ease;">
                 <i class="fas fa-check-circle" style="font-size: 24px; margin-right: 8px;"></i> <?= $mensaje_exito ?>
-                <script>
-                    setTimeout(function() { window.location.href = '/asistencia/index'; }, 2500);
-                </script>
             </div>
             <style>
                 @keyframes slideDown {
@@ -52,7 +49,7 @@
                 <?php if(isset($perfil_validacion)): ?>
                     
                     <div class="card shadow-lg mb-4 border-0 card-verificacion">
-                        <div class="card-header" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; padding: 20px;">
+                        <div class="card-header" style="background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%); color: white; padding: 20px;">
                             <h5 class="m-0 fw-bold text-center"><i class="fas fa-eye"></i> VERIFICACIÓN REQUERIDA</h5>
                         </div>
                         
@@ -99,12 +96,12 @@
                                     <?php if($perfil_validacion['tiene_acceso'] && $perfil_validacion['estado_socio'] == 'activo'): ?>
                                         <form action="/asistencia/registrar" method="POST">
                                             <input type="hidden" name="socio_id" value="<?= $perfil_validacion['id'] ?>">
-                                            <button type="submit" class="btn btn-primary btn-lg w-100 py-3 fw-bold shadow">
+                                            <button type="submit" class="btn btn-lg w-100 py-3 fw-bold shadow" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; border: none;">
                                                 <i class="fas fa-check"></i> CONFIRMAR
                                             </button>
                                         </form>
                                     <?php else: ?>
-                                        <button class="btn btn-danger btn-lg w-100 py-3 disabled" disabled>
+                                        <button class="btn btn-lg w-100 py-3 disabled" disabled style="background-color: #9CA3AF; color: white;">
                                             <i class="fas fa-lock"></i> NO HABILITADO
                                         </button>
                                     <?php endif; ?>
@@ -117,21 +114,21 @@
                 <?php else: ?>
 
                     <div class="card shadow-lg mb-4 border-0">
-                        <div class="card-header" style="background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%); color: #1F2937; padding: 20px; border-bottom: 2px solid #DC2626;">
+                        <div class="card-header" style="background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); color: white; padding: 20px; border-bottom: 2px solid #0891B2;">
                             <h3 class="m-0 text-center"><i class="fas fa-id-card-alt"></i> Control de Acceso</h3>
                         </div>
                         <div class="card-body p-5 text-center">
                             <div class="mb-4">
-                                <i class="fas fa-dumbbell fa-4x" style="color: #DC2626; opacity: 0.3;"></i>
+                                <i class="fas fa-dumbbell fa-4x" style="color: #8B5CF6; opacity: 0.3;"></i>
                                 <h5 class="text-muted mt-3">Escanea tu DNI para ingresar</h5>
                             </div>
 
                             <form action="/asistencia/validar" method="POST">
                                 <input type="text" name="dni" class="form-control big-input" 
                                        placeholder="DNI..." autocomplete="off" autofocus required
-                                       style="border: 2px solid #DC2626;">
+                                       style="border: 2px solid #3B82F6;">
                                 <div class="d-grid mt-4">
-                                    <button type="submit" class="btn btn-primary btn-lg">
+                                    <button type="submit" class="btn btn-lg" style="background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); color: white; border: none; font-weight: 600;">
                                         <i class="fas fa-search"></i> BUSCAR SOCIO
                                     </button>
                                 </div>
@@ -146,12 +143,12 @@
 
         <div class="card shadow border-0 mt-3">
             <div class="card-header">
-                <h5 class="m-0"><i class="fas fa-history" style="color: #DC2626;"></i> Ingresos Confirmados Hoy</h5>
+                <h5 class="m-0"><i class="fas fa-history" style="color: #F97316;"></i> Ingresos Confirmados Hoy</h5>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
                     <table class="table table-hover table-data mb-0 align-middle">
-                        <thead style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white;">
+                        <thead style="background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%); color: white;">
                             <tr>
                                 <th>Hora</th>
                                 <th>Socio</th>
@@ -162,10 +159,10 @@
                         <tbody>
                             <?php foreach($historial as $h): ?>
                                 <tr>
-                                    <td class="fw-bold" style="color: #DC2626;"><?= date('H:i:s', strtotime($h['fecha_hora'])) ?></td>
+                                    <td class="fw-bold" style="color: #F97316;"><?= date('H:i:s', strtotime($h['fecha_hora'])) ?></td>
                                     <td><?= $h['nombre'] ?></td>
                                     <td><code><?= $h['dni'] ?></code></td>
-                                    <td><span class="badge" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);">Ingresó</span></td>
+                                    <td><span class="badge" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">Ingresó</span></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

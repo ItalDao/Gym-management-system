@@ -241,7 +241,7 @@
         <?php else: ?>
             
             <!-- Hero Welcome Section for Non-Admin Users -->
-            <div class="card card-welcome shadow-lg border-0 mb-5" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; overflow: hidden;">
+            <div class="card card-welcome shadow-lg border-0 mb-5" style="background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%); color: white; overflow: hidden;">
                 <div class="card-body py-5">
                     <div class="row align-items-center">
                         <div class="col-md-8">

@@ -18,7 +18,7 @@
         <div class="mb-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h1 class="mb-2"><i class="fas fa-user-shield" style="color: #DC2626;"></i> Gestión de Usuarios</h1>
+                    <h1 class="mb-2"><i class="fas fa-user-shield" style="color: #3B82F6;"></i> Gestión de Usuarios</h1>
                     <p class="text-muted">Control de accesos y permisos del sistema</p>
                 </div>
                 <a href="/usuarios/crear" class="btn btn-primary">
@@ -31,7 +31,7 @@
             <div class="card-body p-0">
                 <div class="table-responsive">
                 <table class="table table-hover align-middle table-data mb-0">
-                    <thead style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white;">
+                    <thead style="background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%); color: white;">
                         <tr>
                             <th style="width: 8%;">ID</th>
                             <th>Nombre</th>
@@ -46,15 +46,15 @@
                         <tr>
                             <td><small class="text-muted">#<?= $u['id'] ?></small></td>
                             <td>
-                                <strong style="color: #DC2626;"><?= $u['nombre'] ?></strong>
+                                <strong style="color: #3B82F6;"><?= $u['nombre'] ?></strong>
                             </td>
                             <td><small><?= $u['email'] ?></small></td>
                             <td>
                                 <?php 
-                                    $rolColor = '#DC2626';
+                                    $rolColor = '#3B82F6';
                                     $rolIcon = 'fa-user';
                                     if($u['rol'] == 'admin') { 
-                                        $rolColor = '#DC2626'; 
+                                        $rolColor = '#8B5CF6'; 
                                         $rolIcon = 'fa-crown';
                                     }
                                     if($u['rol'] == 'recepcionista') { 
@@ -62,7 +62,7 @@
                                         $rolIcon = 'fa-headset';
                                     }
                                     if($u['rol'] == 'entrenador') { 
-                                        $rolColor = '#DC2626'; 
+                                        $rolColor = '#06B6D4'; 
                                         $rolIcon = 'fa-dumbbell';
                                     }
                                 ?>
@@ -72,17 +72,17 @@
                             </td>
                             <td>
                                 <?php if($u['estado'] == 'activo'): ?>
-                                    <span class="badge" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);">
+                                    <span class="badge" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
                                         <i class="fas fa-check-circle"></i> Activo
                                     </span>
                                 <?php else: ?>
-                                    <span class="badge" style="background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);">
+                                    <span class="badge" style="background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%);">
                                         <i class="fas fa-times-circle"></i> Inactivo
                                     </span>
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <a href="/usuarios/editar/<?= $u['id'] ?>" class="btn btn-sm" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; border: none;" title="Editar">
+                                <a href="/usuarios/editar/<?= $u['id'] ?>" class="btn btn-sm" style="background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); color: white; border: none;" title="Editar">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 

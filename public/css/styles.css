@@ -14,7 +14,7 @@
     --accent-light: #EF4444;      /* Rojo claro - Highlights */
     
     /* Colores Secundarios - Profesionalismo GYM */
-    --success: #DC2626;           /* Rojo - Éxito, Logros */
+    --success: #10B981;           /* Verde - Éxito, Logros, Salud */
     --warning: #F97316;           /* Naranja - Precaución, Intensidad */
     --danger: #7F1D1D;            /* Rojo oscuro - Alerta crítica */
     --dark: #111827;              /* Gris MUY Oscuro - Texto principal */
@@ -26,6 +26,13 @@
     /* Colores Adicionales - GYM Vibes */
     --metal: #71717A;             /* Gris Metálico - Equipo */
     --power: #DC2626;             /* Power Red - Intensidad */
+    
+    /* Nuevos Colores para Balance y Complejidad */
+    --blue: #3B82F6;              /* Azul - Confianza, Profesionalismo */
+    --cyan: #06B6D4;              /* Cyan - Moderno, Energía */
+    --purple: #8B5CF6;            /* Púrpura - Premium, Sofisticación */
+    --green: #10B981;             /* Verde - Salud, Crecimiento */
+    --orange: #F97316;            /* Naranja - Motivación, Intensidad */
     
     /* Sombras - Ligeras y limpias */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);

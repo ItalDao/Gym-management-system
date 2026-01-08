@@ -17,8 +17,8 @@
             color: white;
         }
         .tab-link-active {
-            border-bottom: 4px solid #DC2626;
-            color: #DC2626 !important;
+            border-bottom: 4px solid #8B5CF6;
+            color: #8B5CF6 !important;
         }
     </style>
 </head>
@@ -30,7 +30,7 @@
         
         <!-- Header Premium con datos del socio -->
         <div class="card border-0 shadow mb-4">
-            <div style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); padding: 30px; display: flex; align-items: center; gap: 30px; border-radius: 15px 15px 0 0; color: white;">
+            <div style="background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%); padding: 30px; display: flex; align-items: center; gap: 30px; border-radius: 15px 15px 0 0; color: white;">
                 <div>
                     <?php if(!empty($socio['foto'])): ?>
                         <img src="/img/socios/<?= $socio['foto'] ?>" class="rounded-circle" width="100" height="100" style="object-fit:cover; border: 4px solid white;">
@@ -121,7 +121,7 @@
                         <div class="card border-0 shadow mb-4">
                             <div style="background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%); padding: 20px; border-radius: 15px 15px 0 0;">
                                 <h6 style="margin: 0; font-weight: 700; color: #1a1a1a; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px;">
-                                    <i class="fas fa-chart-line" style="color: #DC2626;"></i> Evolución de Peso
+                                    <i class="fas fa-chart-line" style="color: #8B5CF6;"></i> Evolución de Peso
                                 </h6>
                             </div>
                             <div class="card-body p-4">
@@ -131,7 +131,7 @@
 
                         <!-- Historial de Medidas -->
                         <div class="card border-0 shadow">
-                            <div style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); padding: 20px; color: white; border-radius: 15px 15px 0 0;">
+                            <div style="background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%); padding: 20px; color: white; border-radius: 15px 15px 0 0;">
                                 <h6 style="margin: 0; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px;">
                                     <i class="fas fa-list"></i> Historial Completo
                                 </h6>
@@ -180,7 +180,7 @@
                         <?php 
                             $dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
                             $campos = ['dia1', 'dia2', 'dia3', 'dia4', 'dia5', 'dia6'];
-                            $colores = ['#DC2626', '#F97316', '#991B1B', '#EF4444', '#EA580C', '#7F1D1D'];
+                            $colores = ['#3B82F6', '#8B5CF6', '#06B6D4', '#0891B2', '#6D28D9', '#2563EB'];
                         ?>
                         
                         <?php for($i=0; $i<6; $i++): ?>
