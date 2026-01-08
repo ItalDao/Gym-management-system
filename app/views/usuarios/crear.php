@@ -15,7 +15,7 @@
             <div class="col-lg-6">
                 <div class="card border-0 shadow">
                     <!-- Premium Header -->
-                    <div style="background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); padding: 40px 30px; text-align: center; color: white;">
+                    <div style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%); padding: 40px 30px; text-align: center; color: white;">
                         <i class="fas fa-user-plus" style="font-size: 40px; display: block; margin-bottom: 15px;"></i>
                         <h2 style="margin: 0 0 8px; font-weight: 800; font-size: 28px;">Crear Nuevo Usuario</h2>
                         <p style="margin: 0; opacity: 0.9; font-size: 14px;">Agregue un nuevo miembro al sistema</p>
@@ -95,7 +95,7 @@
                             <div style="display: grid; gap: 12px;">
                                 <button 
                                     type="submit" 
-                                    style="background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); color: white; font-weight: 700; padding: 14px; border-radius: 8px; border: none; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; cursor: pointer;"
+                                    style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%); color: white; font-weight: 700; padding: 14px; border-radius: 8px; border: none; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; cursor: pointer;"
                                 >
                                     <i class="fas fa-save"></i> GUARDAR USUARIO
                                 </button>

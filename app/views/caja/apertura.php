@@ -30,7 +30,7 @@
             <div class="col-lg-5">
                 <div class="card border-0 shadow" style="transition: all 0.3s ease;">
                     <!-- Header Premium -->
-                    <div style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); padding: 40px 30px; text-align: center; color: white;">
+                    <div style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); padding: 40px 30px; text-align: center; color: white;">
                         <i class="fas fa-cash-register" style="font-size: 48px; display: block; margin-bottom: 15px; opacity: 0.9;"></i>
                         <h2 style="margin: 0 0 8px; font-weight: 800; font-size: 28px;">Apertura de Caja</h2>
                         <p style="margin: 0; opacity: 0.9; font-size: 14px;">Ingrese el monto inicial para comenzar</p>
@@ -43,7 +43,7 @@
                                     <i class="fas fa-coins"></i> Monto Inicial
                                 </label>
                                 <div class="input-group" style="height: 50px;">
-                                    <span class="input-group-text" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); color: white; font-weight: 700; border: none; font-size: 18px;">
+                                    <span class="input-group-text" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; font-weight: 700; border: none; font-size: 18px;">
                                         <?= $config['moneda'] ?>
                                     </span>
                                     <input 
@@ -52,7 +52,7 @@
                                         name="monto_inicial" 
                                         class="form-control" 
                                         placeholder="0.00" 
-                                        style="font-weight: 700; font-size: 18px; border: 2px solid #F97316;"
+                                        style="font-weight: 700; font-size: 18px; border: 2px solid #10B981;"
                                         required 
                                         autofocus
                                     >
@@ -80,9 +80,9 @@
                         <tr>
                             <th>Fecha Cierre</th>
                             <th>Cajero</th>
-                            <th style="color: #F97316;">Inicial</th>
-                            <th style="color: #F97316;">Ventas</th>
-                            <th style="color: #F97316;">Gastos</th>
+                            <th style="color: #10B981;">Inicial</th>
+                            <th style="color: #10B981;">Ventas</th>
+                            <th style="color: #10B981;">Gastos</th>
                             <th style="color: #1a1a1a;">Esperado</th>
                             <th style="color: #1a1a1a;">Real</th>
                             <th style="color: #1a1a1a;">Cuadre</th>
@@ -95,12 +95,12 @@
                                 <td><small class="text-muted"><?= date('d/m/Y H:i', strtotime($h['fecha_cierre'])) ?></small></td>
                                 <td><strong><?= $h['cajero'] ?></strong></td>
                                 <td>
-                                    <span class="badge" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);">
+                                    <span class="badge" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
                                         <?= $config['moneda'] . number_format($h['monto_inicial'], 2) ?>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="badge" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);">
+                                    <span class="badge" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
                                         +<?= number_format($h['total_ventas'], 2) ?>
                                     </span>
                                 </td>
@@ -121,7 +121,7 @@
                                 
                                 <td>
                                     <?php if($h['diferencia'] == 0): ?>
-                                        <span class="badge" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);">
+                                        <span class="badge" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
                                             <i class="fas fa-check-circle"></i> OK
                                         </span>
                                     <?php elseif($h['diferencia'] < 0): ?>
@@ -129,7 +129,7 @@
                                             <i class="fas fa-minus-circle"></i> Falta
                                         </span>
                                     <?php else: ?>
-                                        <span class="badge" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);">
+                                        <span class="badge" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);">
                                             <i class="fas fa-plus-circle"></i> Sobra
                                         </span>
                                     <?php endif; ?>

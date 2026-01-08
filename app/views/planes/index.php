@@ -18,7 +18,7 @@
         <div class="mb-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h1 class="mb-2"><i class="fas fa-dumbbell" style="color: #8B5CF6;"></i> Planes de Membresía</h1>
+                    <h1 class="mb-2"><i class="fas fa-dumbbell" style="color: #DC2626;"></i> Planes de Memberesía</h1>
                     <p class="text-muted">Gestiona los planes de suscripción disponibles</p>
                 </div>
                 <a href="/planes/crear" class="btn btn-primary">
@@ -31,7 +31,7 @@
             <div class="card-body p-0">
                 <div class="table-responsive">
                 <table class="table table-hover align-middle table-data mb-0">
-                    <thead style="background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%); color: white;">
+                    <thead style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white;">
                         <tr>
                             <th>Nombre</th>
                             <th>Precio</th>
@@ -45,10 +45,10 @@
                         <?php foreach ($planes as $plan): ?>
                         <tr>
                             <td>
-                                <strong style="color: #8B5CF6;"><?= $plan['nombre'] ?></strong>
+                                <strong style="color: #10B981;"><?= $plan['nombre'] ?></strong>
                             </td>
                             <td>
-                                <span class="badge" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);">
+                                <span class="badge" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);">
                                     <?= $config['moneda'] ?> <?= number_format($plan['precio'], 2) ?>
                                 </span>
                             </td>
@@ -56,27 +56,27 @@
                             <td><small><?= $plan['descripcion'] ?></small></td>
                             <td>
                                 <?php if($plan['estado'] == 'activo'): ?>
-                                    <span class="badge" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);">Activo</span>
+                                    <span class="badge" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">Activo</span>
                                 <?php else: ?>
                                     <span class="badge" style="background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%);">Inactivo</span>
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <a href="/planes/editar/<?= $plan['id'] ?>" class="btn btn-sm" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); color: white; border: none;">
+                                <a href="/planes/editar/<?= $plan['id'] ?>" class="btn btn-sm" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; border: none;">
                                     <i class="fas fa-edit"></i>
                                 </a>
 
                                 <?php if($plan['estado'] == 'activo'): ?>
                                     <a href="/planes/cambiarEstado/<?= $plan['id'] ?>/inactivo" 
                                        class="btn btn-sm btn-confirm"
-                                       style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); color: white; border: none;"
+                                       style="background: linear-gradient(135deg, #1F2937 0%, #111827 100%); color: white; border: none;"
                                        data-title="¿Desactivar este plan?">
                                         <i class="fas fa-ban"></i>
                                     </a>
                                 <?php else: ?>
                                     <a href="/planes/cambiarEstado/<?= $plan['id'] ?>/activo" 
                                        class="btn btn-sm btn-confirm"
-                                       style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); color: white; border: none;"
+                                       style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; border: none;"
                                        data-title="¿Reactivar este plan?">
                                         <i class="fas fa-check"></i>
                                     </a>

@@ -31,7 +31,7 @@
             <div class="card-body p-0">
                 <div class="table-responsive">
                 <table class="table table-hover align-middle table-data mb-0">
-                    <thead style="background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%); color: white;">
+                    <thead style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%); color: white;">
                         <tr>
                             <th style="width: 8%;">ID</th>
                             <th>Nombre</th>
@@ -54,15 +54,15 @@
                                     $rolColor = '#3B82F6';
                                     $rolIcon = 'fa-user';
                                     if($u['rol'] == 'admin') { 
-                                        $rolColor = '#8B5CF6'; 
+                                        $rolColor = '#DC2626'; 
                                         $rolIcon = 'fa-crown';
                                     }
                                     if($u['rol'] == 'recepcionista') { 
-                                        $rolColor = '#F97316'; 
+                                        $rolColor = '#10B981'; 
                                         $rolIcon = 'fa-headset';
                                     }
                                     if($u['rol'] == 'entrenador') { 
-                                        $rolColor = '#06B6D4'; 
+                                        $rolColor = '#3B82F6'; 
                                         $rolIcon = 'fa-dumbbell';
                                     }
                                 ?>
@@ -82,7 +82,7 @@
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <a href="/usuarios/editar/<?= $u['id'] ?>" class="btn btn-sm" style="background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); color: white; border: none;" title="Editar">
+                                <a href="/usuarios/editar/<?= $u['id'] ?>" class="btn btn-sm" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%); color: white; border: none;" title="Editar">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 

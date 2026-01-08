@@ -49,7 +49,7 @@
                 <?php if(isset($perfil_validacion)): ?>
                     
                     <div class="card shadow-lg mb-4 border-0 card-verificacion">
-                        <div class="card-header" style="background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%); color: white; padding: 20px;">
+                        <div class="card-header" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%); color: white; padding: 20px;">
                             <h5 class="m-0 fw-bold text-center"><i class="fas fa-eye"></i> VERIFICACIÓN REQUERIDA</h5>
                         </div>
                         
@@ -114,12 +114,12 @@
                 <?php else: ?>
 
                     <div class="card shadow-lg mb-4 border-0">
-                        <div class="card-header" style="background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); color: white; padding: 20px; border-bottom: 2px solid #0891B2;">
+                        <div class="card-header" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%); color: white; padding: 20px; border-bottom: 2px solid #1E40AF;">
                             <h3 class="m-0 text-center"><i class="fas fa-id-card-alt"></i> Control de Acceso</h3>
                         </div>
                         <div class="card-body p-5 text-center">
                             <div class="mb-4">
-                                <i class="fas fa-dumbbell fa-4x" style="color: #8B5CF6; opacity: 0.3;"></i>
+                                <i class="fas fa-dumbbell fa-4x" style="color: #DC2626; opacity: 0.3;"></i>
                                 <h5 class="text-muted mt-3">Escanea tu DNI para ingresar</h5>
                             </div>
 
@@ -128,7 +128,7 @@
                                        placeholder="DNI..." autocomplete="off" autofocus required
                                        style="border: 2px solid #3B82F6;">
                                 <div class="d-grid mt-4">
-                                    <button type="submit" class="btn btn-lg" style="background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); color: white; border: none; font-weight: 600;">
+                                    <button type="submit" class="btn btn-lg" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%); color: white; border: none; font-weight: 600;">
                                         <i class="fas fa-search"></i> BUSCAR SOCIO
                                     </button>
                                 </div>
@@ -143,12 +143,12 @@
 
         <div class="card shadow border-0 mt-3">
             <div class="card-header">
-                <h5 class="m-0"><i class="fas fa-history" style="color: #F97316;"></i> Ingresos Confirmados Hoy</h5>
+                <h5 class="m-0"><i class="fas fa-history" style="color: #DC2626;"></i> Ingresos Confirmados Hoy</h5>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
                     <table class="table table-hover table-data mb-0 align-middle">
-                        <thead style="background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%); color: white;">
+                        <thead style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%); color: white;">
                             <tr>
                                 <th>Hora</th>
                                 <th>Socio</th>
@@ -163,7 +163,7 @@
                                 foreach($historial as $h): 
                             ?>
                                 <tr>
-                                    <td class="fw-bold" style="color: #F97316;"><?= date('H:i:s', strtotime($h['fecha_hora'])) ?></td>
+                                    <td class="fw-bold" style="color: #10B981;"><?= date('H:i:s', strtotime($h['fecha_hora'])) ?></td>
                                     <td><?= $h['nombre'] ?></td>
                                     <td><code><?= $h['dni'] ?></code></td>
                                     <td><span class="badge" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">Ingresó</span></td>

@@ -11,7 +11,7 @@ $config = Configuracion::getInfo();
         background: linear-gradient(135deg, #FFFFFF 0%, #F3F4F6 50%, #FFFFFF 100%);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         position: relative;
-        border-bottom: 4px solid #DC2626;
+        border-bottom: 4px solid #3B82F6;
         color: #111827;
     }
     
@@ -28,7 +28,7 @@ $config = Configuracion::getInfo();
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, transparent, #DC2626, transparent);
+        background: linear-gradient(90deg, transparent, #3B82F6, transparent);
         opacity: 0.8;
     }
 
@@ -46,7 +46,7 @@ $config = Configuracion::getInfo();
 
     .navbar-brand-premium:hover {
         transform: translateY(-2px);
-        text-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        text-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     }
 
     .navbar-brand-premium img {
@@ -54,15 +54,15 @@ $config = Configuracion::getInfo();
         height: 45px;
         border-radius: 50%;
         padding: 6px;
-        background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
-        border: 2px solid rgba(220, 38, 38, 0.2);
-        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+        background: linear-gradient(135deg, #3B82F6 0%, #DC2626 100%);
+        border: 2px solid rgba(59, 130, 246, 0.2);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
         transition: all 0.3s ease;
     }
 
     .navbar-brand-premium:hover img {
         transform: scale(1.1) rotate(3deg);
-        box-shadow: 0 6px 16px rgba(220, 38, 38, 0.3);
+        box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
     }
 
     .nav-link-premium {
@@ -86,14 +86,14 @@ $config = Configuracion::getInfo();
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.15), transparent);
+        background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.15), transparent);
         transition: left 0.5s ease;
     }
 
     .nav-link-premium:hover {
-        color: #DC2626 !important;
-        background: rgba(220, 38, 38, 0.1);
-        border-bottom: 2px solid #DC2626;
+        color: #3B82F6 !important;
+        background: rgba(59, 130, 246, 0.1);
+        border-bottom: 2px solid #3B82F6;
         transform: translateY(-2px);
     }
 
@@ -106,13 +106,13 @@ $config = Configuracion::getInfo();
     }
 
     .nav-link-active-premium {
-        color: #DC2626 !important;
-        background: rgba(220, 38, 38, 0.1) !important;
-        border-bottom: 2px solid #DC2626 !important;
+        color: #3B82F6 !important;
+        background: rgba(59, 130, 246, 0.1) !important;
+        border-bottom: 2px solid #3B82F6 !important;
     }
 
     .navbar-toggler-premium {
-        border: 2px solid #DC2626;
+        border: 2px solid #3B82F6;
         padding: 6px 10px;
         transition: all 0.3s ease;
     }
@@ -151,9 +151,9 @@ $config = Configuracion::getInfo();
     }
 
     .dropdown-item-premium:hover {
-        background: rgba(220, 38, 38, 0.1) !important;
-        color: #DC2626 !important;
-        border-left-color: #DC2626;
+        background: rgba(59, 130, 246, 0.1) !important;
+        color: #3B82F6 !important;
+        border-left-color: #3B82F6;
         padding-left: 20px !important;
     }
 
@@ -173,15 +173,15 @@ $config = Configuracion::getInfo();
         align-items: center;
         gap: 8px;
         padding: 8px 12px;
-        background: rgba(220, 38, 38, 0.1);
+        background: rgba(59, 130, 246, 0.1);
         border-radius: 20px;
-        border: 1px solid rgba(220, 38, 38, 0.3);
+        border: 1px solid rgba(59, 130, 246, 0.3);
         transition: all 0.3s ease;
     }
 
     .user-badge-premium:hover {
-        background: rgba(220, 38, 38, 0.15);
-        border-color: #DC2626;
+        background: rgba(59, 130, 246, 0.15);
+        border-color: #3B82F6;
     }
 
     .user-badge-premium small {
@@ -202,13 +202,13 @@ $config = Configuracion::getInfo();
             <?php if(!empty($config['logo'])): ?>
                 <img src="/img/<?= $config['logo'] ?>?v=<?= time() ?>" alt="Logo">
             <?php else: ?>
-                <i class="fas fa-dumbbell" style="font-size: 28px; background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                <i class="fas fa-dumbbell" style="font-size: 28px; background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
             <?php endif; ?>
             <span><?= $config['nombre_sistema'] ?></span>
         </a>
         
         <button class="navbar-toggler navbar-toggler-premium" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
-            <i class="fas fa-bars" style="color: #F97316;"></i>
+            <i class="fas fa-bars" style="color: #DC2626;"></i>
         </button>
         
         <div class="collapse navbar-collapse" id="navbarNav">

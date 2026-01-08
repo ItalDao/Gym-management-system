@@ -31,7 +31,7 @@
                                 <label for="foto" class="form-label fw-bold text-uppercase text-muted small" style="letter-spacing: 0.5px;">
                                     <i class="fas fa-image"></i> Foto de Perfil
                                 </label>
-                                <div style="border: 2px dashed #F97316; padding: 30px; border-radius: 10px; text-align: center; background: linear-gradient(135deg, rgba(249, 115, 22, 0.05) 0%, rgba(249, 115, 22, 0.02) 100%);" id="upload-area">
+                                <div style="border: 2px dashed #3B82F6; padding: 30px; border-radius: 10px; text-align: center; background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);" id="upload-area">
                                     <input type="file" 
                                            class="form-control" 
                                            id="foto"
@@ -40,13 +40,13 @@
                                            onchange="previewImage(event)"
                                            style="display: none;">
                                     <label for="foto" style="cursor: pointer; margin: 0;">
-                                        <i class="fas fa-cloud-upload-alt" style="font-size: 32px; color: #F97316; display: block; margin-bottom: 10px;"></i>
+                                        <i class="fas fa-cloud-upload-alt" style="font-size: 32px; color: #3B82F6; display: block; margin-bottom: 10px;"></i>
                                         <span style="color: #666; font-weight: 600;">Seleccionar imagen o arrastrar</span>
                                     </label>
                                     <small style="color: #999; display: block; margin-top: 8px;">JPG, PNG (máx. 5MB)</small>
                                 </div>
                                 <div id="preview-container" style="display: none;" class="mt-3 text-center">
-                                    <img id="preview" src="" alt="Vista previa" class="rounded" style="max-width: 150px; max-height: 150px; border: 3px solid #F97316;">
+                                    <img id="preview" src="" alt="Vista previa" class="rounded" style="max-width: 150px; max-height: 150px; border: 3px solid #3B82F6;">
                                 </div>
                             </div>
 
@@ -158,13 +158,13 @@
 
         uploadArea.addEventListener('dragover', (e) => {
             e.preventDefault();
-            uploadArea.style.background = 'linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0.05) 100%)';
-            uploadArea.style.borderColor = '#F97316';
+            uploadArea.style.background = 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%)';
+            uploadArea.style.borderColor = '#3B82F6';
         });
 
         uploadArea.addEventListener('dragleave', () => {
-            uploadArea.style.background = 'linear-gradient(135deg, rgba(249, 115, 22, 0.05) 0%, rgba(249, 115, 22, 0.02) 100%)';
-            uploadArea.style.borderColor = '#F97316';
+            uploadArea.style.background = 'linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%)';
+            uploadArea.style.borderColor = '#3B82F6';
         });
 
         uploadArea.addEventListener('drop', (e) => {

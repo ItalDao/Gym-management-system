@@ -53,7 +53,7 @@
                                              alt="Foto" 
                                              class="rounded-circle border-2"
                                              width="45" height="45" 
-                                             style="object-fit: cover; border-color: #06B6D4;">
+                                             style="object-fit: cover; border-color: #3B82F6;">
                                     <?php else: ?>
                                         <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" 
                                              style="width: 45px; height: 45px; font-weight: 600;">

@@ -15,7 +15,7 @@
             <div class="col-md-6">
                 <div class="card border-0 shadow">
                     <!-- Premium Header - Orange -->
-                    <div style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); padding: 40px 30px; text-align: center; color: white;">
+                    <div style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); padding: 40px 30px; text-align: center; color: white;">
                         <i class="fas fa-edit" style="font-size: 40px; display: block; margin-bottom: 15px;"></i>
                         <h2 style="margin: 0 0 8px; font-weight: 800; font-size: 28px;">Editar Plan</h2>
                         <p style="margin: 0; opacity: 0.9; font-size: 14px;">Actualice los detalles del plan</p>
@@ -47,7 +47,7 @@
                                         <i class="fas fa-coins"></i> Precio
                                     </label>
                                     <div class="input-group" style="height: 50px;">
-                                        <span class="input-group-text" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); color: white; font-weight: 700; border: none;">
+                                        <span class="input-group-text" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%); color: white; font-weight: 700; border: none;">
                                             <?= $config['moneda'] ?>
                                         </span>
                                         <input 
@@ -56,7 +56,7 @@
                                             class="form-control" 
                                             name="precio" 
                                             value="<?= $plan['precio'] ?>"
-                                            style="border: 2px solid #F97316; font-weight: 700;"
+                                            style="border: 2px solid #3B82F6; font-weight: 700;"
                                             required>
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@
                             <div style="display: grid; gap: 12px;">
                                 <button 
                                     type="submit" 
-                                    style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); color: white; font-weight: 700; padding: 14px; border-radius: 8px; border: none; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; cursor: pointer;"
+                                    style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; font-weight: 700; padding: 14px; border-radius: 8px; border: none; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; cursor: pointer;"
                                 >
                                     <i class="fas fa-sync-alt"></i> ACTUALIZAR PLAN
                                 </button>

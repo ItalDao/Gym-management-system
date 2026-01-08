@@ -18,7 +18,7 @@
         <div class="mb-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h1 class="mb-2"><i class="fas fa-file-invoice-dollar" style="color: #8B5CF6;"></i> Suscripciones Activas</h1>
+                    <h1 class="mb-2"><i class="fas fa-file-invoice-dollar" style="color: #DC2626;"></i> Suscripciones Activas</h1>
                     <p class="text-muted">Control de membresías activas y renovaciones</p>
                 </div>
                 <div>
@@ -36,7 +36,7 @@
             <div class="card-body p-0">
                 <div class="table-responsive">
                 <table class="table table-hover align-middle table-data mb-0">
-                    <thead style="background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%); color: white;">
+                    <thead style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white;">
                         <tr>
                             <th>ID</th>
                             <th>Socio</th>
@@ -58,11 +58,11 @@
                             <tr class="<?= $vencida ? 'table-danger' : '' ?>">
                                 <td><small class="text-muted">#<?= $sub['id'] ?></small></td>
                                 <td>
-                                    <strong style="color: #8B5CF6;"><?= $sub['nombre_socio'] ?></strong>
+                                    <strong style="color: #10B981;"><?= $sub['nombre_socio'] ?></strong>
                                 </td>
                                 <td>
                                     <?= $sub['nombre_plan'] ?><br>
-                                    <span class="badge" style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);">
+                                    <span class="badge" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);">
                                         <?= $config['moneda'] ?><?= $sub['precio'] ?>
                                     </span>
                                 </td>
@@ -78,23 +78,25 @@
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <a href="/comprobante/generar/<?= $sub['id'] ?>" 
-                                       target="_blank" 
-                                       class="btn btn-sm" 
-                                       style="background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); color: white; border: none;"
-                                       title="Imprimir PDF">
-                                        <i class="fas fa-print"></i>
-                                    </a>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a href="/comprobante/generar/<?= $sub['id'] ?>" 
+                                           target="_blank" 
+                                           class="btn" 
+                                           title="Imprimir PDF"
+                                           style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%); color: white; border: none;">
+                                            <i class="fas fa-print"></i>
+                                        </a>
 
-                                    <?php if(!$vencida): ?>
-                                    <a href="/suscripciones/cancelar/<?= $sub['id'] ?>" 
-                                       class="btn btn-sm btn-confirm"
-                                       style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); color: white; border: none;"
-                                       data-title="¿Cancelar suscripción de <?= $sub['nombre_socio'] ?>?"
-                                       title="Cancelar Suscripción">
-                                        <i class="fas fa-times-circle"></i>
-                                    </a>
-                                    <?php endif; ?>
+                                        <?php if(!$vencida): ?>
+                                        <a href="/suscripciones/cancelar/<?= $sub['id'] ?>" 
+                                           class="btn btn-confirm"
+                                           data-title="¿Cancelar suscripción de <?= $sub['nombre_socio'] ?>?"
+                                           title="Cancelar Suscripción"
+                                           style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%); color: white; border: none;">
+                                            <i class="fas fa-times-circle"></i>
+                                        </a>
+                                        <?php endif; ?>
+                                    </div>
                                 </td>
                             </tr>
                             <?php endforeach; ?>

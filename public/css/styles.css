@@ -3,36 +3,25 @@
    Colores Poder, Intensidad, Profesionalismo
    =================================== */
 
-/* Variables CSS - Paleta GYM POWER */
+/* Variables CSS - Paleta GYM POWER (SOLO 5 COLORES) */
 :root {
-    /* Colores Primarios - GYM Power */
-    --primary: #DC2626;           /* Rojo Intenso - Poder, Energía GYM */
-    --secondary: #1F2937;         /* Gris Oscuro - Profesional, Sólido */
-    --tertiary: #F97316;          /* Naranja - Intensidad, Fuego */
-    --accent: #DC2626;            /* ROJO - Acento principal */
-    --accent-dark: #991B1B;       /* Rojo oscuro - Sombras */
-    --accent-light: #EF4444;      /* Rojo claro - Highlights */
+    /* Paleta Principal - 5 Colores Armoniosos */
+    --primary: #3B82F6;           /* 🔵 Azul - Primary, Info, Trust */
+    --secondary: #1F2937;         /* ⚫ Gris - Secondary, Dark */
+    --success: #10B981;           /* 🟢 Verde - Success, Growth */
+    --danger: #DC2626;            /* 🔴 Rojo - Danger, Identity GYM */
+    --light: #F3F4F6;             /* ⚪ Blanco - Light Background */
     
-    /* Colores Secundarios - Profesionalismo GYM */
-    --success: #10B981;           /* Verde - Éxito, Logros, Salud */
-    --warning: #F97316;           /* Naranja - Precaución, Intensidad */
-    --danger: #7F1D1D;            /* Rojo oscuro - Alerta crítica */
-    --dark: #111827;              /* Gris MUY Oscuro - Texto principal */
-    --light: #F3F4F6;             /* Gris Muy Claro - Fondo */
+    /* Variantes de Colores Base */
+    --accent: #3B82F6;            /* Mismo que primary */
+    --accent-dark: #1E40AF;       /* Azul oscuro - Sombras */
+    --accent-light: #60A5FA;      /* Azul claro - Highlights */
+    --dark: #111827;              /* Gris MUY Oscuro - Texto */
     --gray: #4B5563;              /* Gris Medio - Texto secundario */
     --gray-light: #D1D5DB;        /* Gris Ligero - Bordes */
     --white: #FFFFFF;             /* Blanco Puro */
-    
-    /* Colores Adicionales - GYM Vibes */
-    --metal: #71717A;             /* Gris Metálico - Equipo */
-    --power: #DC2626;             /* Power Red - Intensidad */
-    
-    /* Nuevos Colores para Balance y Complejidad */
-    --blue: #3B82F6;              /* Azul - Confianza, Profesionalismo */
-    --cyan: #06B6D4;              /* Cyan - Moderno, Energía */
-    --purple: #8B5CF6;            /* Púrpura - Premium, Sofisticación */
-    --green: #10B981;             /* Verde - Salud, Crecimiento */
-    --orange: #F97316;            /* Naranja - Motivación, Intensidad */
+    --warning: #DC2626;           /* Usa Rojo para warning */
+    --power: #DC2626;             /* Power Red - Identidad GYM */
     
     /* Sombras - Ligeras y limpias */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -927,6 +916,13 @@ footer a:hover {
 
 .btn-group .btn {
     margin: 0 2px;
+    padding: 6px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.btn-group .btn i {
+    margin: 0;
 }
 
 .modal-content {
