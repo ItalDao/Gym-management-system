@@ -52,7 +52,7 @@
                                         step="0.01" 
                                         name="monto" 
                                         class="form-control" 
-                                        style="border: 2px solid #DC2626; font-weight: 700; font-size: 16px;"
+                                        style="border: 2px solid #F97316; font-weight: 700; font-size: 16px;"
                                         placeholder="0.00" 
                                         required>
                                 </div>

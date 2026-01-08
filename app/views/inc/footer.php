@@ -35,25 +35,59 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     $(document).ready(function() {
-        // Inicializar DataTables
-        $('.table-data').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
-            },
-            "pageLength": 10,
-            "lengthMenu": [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],
-            "dom": "<'row mb-3'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
-                   "<'row'<'col-sm-12'tr>>" +
-                   "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-            "drawCallback": function() {
-                $('[data-bs-toggle="tooltip"]').each(function() {
-                    var tooltip = bootstrap.Tooltip.getInstance(this);
-                    if (!tooltip) {
-                        new bootstrap.Tooltip(this);
-                    }
-                });
+        // Inicializar DataTables - Destruir si ya existe
+        var table = $('.table-data');
+        if (table.length) {
+            // Si DataTables ya está inicializada, destruirla
+            if ($.fn.DataTable.isDataTable(table)) {
+                table.DataTable().destroy();
             }
-        });
+            
+            // Inicializar DataTables
+            table.DataTable({
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                },
+                "pageLength": 10,
+                "lengthMenu": [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],
+                "dom": "<'row mb-3'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                       "<'row'<'col-sm-12'tr>>" +
+                       "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                "searching": true,
+                "ordering": true,
+                "paging": true,
+                "info": true,
+                "drawCallback": function() {
+                    $('[data-bs-toggle="tooltip"]').each(function() {
+                        var tooltip = bootstrap.Tooltip.getInstance(this);
+                        if (!tooltip) {
+                            new bootstrap.Tooltip(this);
+                        }
+                    });
+                }
+            });
+        }
 
         // SweetAlert para confirmaciones
         $('.btn-confirm').on('click', function(e) {

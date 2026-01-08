@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../config/Database.php';
+
 class Asistencia {
     private $conn;
     private $table_name = "asistencias";
@@ -18,16 +20,14 @@ class Asistencia {
 
     // Ver quiénes han entrado hoy (para mostrar en la pantalla)
     public function obtenerDeHoy() {
-        $hoy = date('Y-m-d');
         // Traemos también el nombre del socio y la hora
         $query = "SELECT a.fecha_hora, s.nombre, s.dni 
                   FROM " . $this->table_name . " a
                   INNER JOIN socios s ON a.socio_id = s.id
-                  WHERE DATE(a.fecha_hora) = :hoy
+                  WHERE DATE(a.fecha_hora) = CURDATE()
                   ORDER BY a.fecha_hora DESC";
         
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':hoy', $hoy);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

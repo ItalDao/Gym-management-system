@@ -2,6 +2,8 @@
 require_once '../app/models/Asistencia.php';
 require_once '../app/models/Socio.php';
 require_once '../app/models/Suscripcion.php';
+require_once '../app/config/Database.php';
+require_once '../app/models/Configuracion.php';
 
 class AsistenciaController {
 
@@ -14,6 +16,8 @@ class AsistenciaController {
 
     public function index() {
         $this->verificarAuth();
+        // Cargar configuración
+        $config = Configuracion::getInfo();
         // Cargar historial del día para la tabla inferior
         $asistenciaModel = new Asistencia();
         $historial = $asistenciaModel->obtenerDeHoy();
@@ -24,11 +28,14 @@ class AsistenciaController {
     public function validar() {
         $this->verificarAuth();
 
+        // Cargar configuración
+        $config = Configuracion::getInfo();
+        $perfil_validacion = null; // Datos para la vista
+        $error_busqueda = "";
+        $historial = [];
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dni = $_POST['dni'];
-            
-            $perfil_validacion = null; // Datos para la vista
-            $error_busqueda = "";
 
             $db = new Database();
             $conn = $db->getConnection();
@@ -82,14 +89,21 @@ class AsistenciaController {
             // Mantenemos el historial visible
             $asistenciaModel = new Asistencia();
             $historial = $asistenciaModel->obtenerDeHoy();
-            
-            require_once '../app/views/asistencia/index.php';
         }
+        
+        require_once '../app/views/asistencia/index.php';
     }
 
     // PASO 2: REGISTRAR EL INGRESO (ACCIÓN DEL OPERADOR)
     public function registrar() {
         $this->verificarAuth();
+
+        // Cargar configuración y variables iniciales
+        $config = Configuracion::getInfo();
+        $mensaje_exito = "";
+        $error_busqueda = "";
+        $perfil_validacion = null;
+        $historial = [];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $socio_id = $_POST['socio_id'];
@@ -104,8 +118,8 @@ class AsistenciaController {
 
             // Recargar historial actualizado
             $historial = $asistenciaModel->obtenerDeHoy();
-            
-            require_once '../app/views/asistencia/index.php';
         }
+        
+        require_once '../app/views/asistencia/index.php';
     }
 }

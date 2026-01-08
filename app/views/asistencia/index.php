@@ -157,7 +157,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($historial as $h): ?>
+                            <?php 
+                                // Debug: Mostrar cantidad de registros
+                                // echo "<!-- Historial count: " . count($historial) . " -->";
+                                foreach($historial as $h): 
+                            ?>
                                 <tr>
                                     <td class="fw-bold" style="color: #F97316;"><?= date('H:i:s', strtotime($h['fecha_hora'])) ?></td>
                                     <td><?= $h['nombre'] ?></td>

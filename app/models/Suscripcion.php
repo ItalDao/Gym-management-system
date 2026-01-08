@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../config/Database.php';
+
 class Suscripcion {
     private $conn;
     private $table_name = "suscripciones";

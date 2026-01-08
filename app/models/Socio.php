@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../config/Database.php';
+
 class Socio {
     private $conn;
     private $table_name = "socios";
