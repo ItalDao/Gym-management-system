@@ -128,7 +128,4 @@
     <!-- Sidebar -->
     <?php require_once __DIR__ . '/sidebar.php'; ?>
 
-</div><!-- end main-content -->
-
-</body>
-</html>
+    </div><!-- end main-content -->
