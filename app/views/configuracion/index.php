@@ -29,6 +29,14 @@
             </div>
         <?php endif; ?>
 
+        <?php if(isset($_GET['error']) && $_GET['error'] == 'sin_permisos'): ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" style="border-left: 4px solid #F59E0B; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%);">
+                <i class="fas fa-lock" style="color: #F59E0B;"></i> 
+                <strong>Acceso Denegado:</strong> Solo administradores pueden modificar la configuración del sistema.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        <?php endif; ?>
+
         <div class="row justify-content-center">
             <div class="col-lg-9">
                 <div class="card border-0 shadow">
@@ -40,8 +48,16 @@
                     </div>
 
                     <div class="card-body p-4">
-                        <form action="/configuracion/actualizar" method="POST" enctype="multipart/form-data">
-                            <input type="hidden" name="logo_actual" value="<?= $datos['logo'] ?>">
+                        <?php if($_SESSION['user_rol'] != 'admin'): ?>
+                            <div class="alert alert-info" style="border-left: 4px solid #3B82F6; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(96, 165, 250, 0.1) 100%);">
+                                <i class="fas fa-info-circle" style="color: #3B82F6;"></i> 
+                                <strong>Modo Vista:</strong> Puedes ver la configuración pero solo administradores pueden modificarla.
+                            </div>
+                        <?php endif; ?>
+
+                        <form action="/configuracion/actualizar" method="POST" enctype="multipart/form-data" <?php if($_SESSION['user_rol'] != 'admin') echo 'onsubmit="return false;"'; ?>>
+                            <?php $disabled = $_SESSION['user_rol'] != 'admin' ? 'disabled' : ''; ?>
+                            <input type="hidden" name="logo_actual" value="<?= $datos['logo'] ?>"><?php if($_SESSION['user_rol'] != 'admin'): ?> <input type="hidden" name="disabled" value="true"> <?php endif; ?>>
 
                             <!-- Logo Section -->
                             <div class="row mb-5 align-items-center">
@@ -60,7 +76,7 @@
                                     <label class="form-label fw-bold text-uppercase text-muted small" style="letter-spacing: 0.5px;">
                                         <i class="fas fa-upload"></i> Subir Nuevo Logo
                                     </label>
-                                    <input type="file" class="form-control" name="logo" accept="image/*" style="border: 2px solid #e0e0e0; padding: 12px 16px;">
+                                    <input type="file" class="form-control" name="logo" accept="image/*" style="border: 2px solid #e0e0e0; padding: 12px 16px;" <?php if($_SESSION['user_rol'] != 'admin') echo 'disabled'; ?>>
                                     <small class="text-muted d-block mt-2">Formatos: PNG, JPG (máximo 2MB)</small>
                                 </div>
                             </div>
@@ -80,6 +96,7 @@
                                         value="<?= $datos['nombre_sistema'] ?>" 
                                         style="border: 2px solid #e0e0e0; padding: 12px 16px; border-radius: 8px;"
                                         required
+                                        <?= $disabled ?>
                                     >
                                 </div>
                                 <div class="col-md-4 mb-4">
@@ -94,6 +111,7 @@
                                         placeholder="Ej: $, S/, €"
                                         style="border: 2px solid #DC2626; padding: 12px 16px; border-radius: 8px;"
                                         required
+                                        <?= $disabled ?>
                                     >
                                 </div>
                             </div>
@@ -111,6 +129,7 @@
                                         value="<?= $datos['ruc'] ?>"
                                         style="border: 2px solid #e0e0e0; padding: 12px 16px; border-radius: 8px;"
                                         required
+                                        <?= $disabled ?>
                                     >
                                 </div>
                                 <div class="col-md-6 mb-4">

@@ -225,9 +225,11 @@ $config = Configuracion::getInfo();
                 <a href="/home" class="navbar-dropdown-item">
                     <i class="fas fa-user"></i> Mi Perfil
                 </a>
+                <?php if(isset($_SESSION['user_rol']) && $_SESSION['user_rol'] == 'admin'): ?>
                 <a href="/configuracion" class="navbar-dropdown-item">
                     <i class="fas fa-cog"></i> Configuración
                 </a>
+                <?php endif; ?>
                 <hr style="margin: 6px 0; border: none; border-top: 1px solid #F3F4F6;">
                 <a href="/auth/logout" class="navbar-dropdown-item danger">
                     <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
