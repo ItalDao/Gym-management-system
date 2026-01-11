@@ -180,7 +180,7 @@
                         <?php 
                             $dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
                             $campos = ['dia1', 'dia2', 'dia3', 'dia4', 'dia5', 'dia6'];
-                            $colores = ['#3B82F6', '#DC2626', '#10B981', '#1F2937', '#F3F4F6'];
+                            $colores = ['#3B82F6', '#DC2626', '#10B981', '#1F2937', '#60A5FA', '#EC4899'];
                         ?>
                         
                         <?php for($i=0; $i<6; $i++): ?>

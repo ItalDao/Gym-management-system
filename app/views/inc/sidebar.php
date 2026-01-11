@@ -247,7 +247,8 @@ $userRole = $_SESSION['user_rol'] ?? 'usuario';
         <?php endif; ?>
     </div>
 
-    <!-- Management Menu -->
+    <!-- Management Menu (Admin y Recepcionista) -->
+    <?php if($userRole != 'entrenador'): ?>
     <div class="sidebar-section">
         <div class="sidebar-title">Gestión</div>
         
@@ -267,7 +268,7 @@ $userRole = $_SESSION['user_rol'] ?? 'usuario';
         </a>
     </div>
 
-    <!-- Financial Menu -->
+    <!-- Financial Menu (Admin y Recepcionista) -->
     <div class="sidebar-section">
         <div class="sidebar-title">Finanzas</div>
         
@@ -281,6 +282,7 @@ $userRole = $_SESSION['user_rol'] ?? 'usuario';
             <span>Gastos</span>
         </a>
     </div>
+    <?php endif; ?>
 
     <!-- Admin Menu -->
     <?php if($userRole == 'admin'): ?>
@@ -304,9 +306,14 @@ $userRole = $_SESSION['user_rol'] ?? 'usuario';
     <div class="sidebar-section">
         <div class="sidebar-title">Entrenamientos</div>
         
-        <a href="/progreso" class="sidebar-menu-item <?= str_contains($_SERVER['REQUEST_URI'], '/progreso') ? 'active' : '' ?>">
-            <i class="fas fa-chart-line"></i>
-            <span>Progreso de Socios</span>
+        <a href="/socios" class="sidebar-menu-item <?= str_contains($_SERVER['REQUEST_URI'], '/socios') ? 'active' : '' ?>">
+            <i class="fas fa-users"></i>
+            <span>Mis Socios</span>
+        </a>
+
+        <a href="/" class="sidebar-menu-item <?= str_contains($_SERVER['REQUEST_URI'], '/home') || $_SERVER['REQUEST_URI'] == '/' ? 'active' : '' ?>">
+            <i class="fas fa-home"></i>
+            <span>Mi Dashboard</span>
         </a>
     </div>
     <?php endif; ?>
